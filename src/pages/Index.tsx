@@ -91,12 +91,12 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section from First Page */}
+      {/* Hero Section with Enhanced Slideshow */}
       <section className="h-screen relative overflow-hidden">
         {/* Logo Area */}
-        <div className="fixed top-10 left-16 z-50 flex items-center gap-6 transition-all duration-300 animate-pulse">
+        <div className="fixed top-10 left-16 z-50 flex items-center gap-6 transition-all duration-300">
           <div className="flex items-center justify-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20 animate-pulse">
               <i className="fas fa-mountain text-white text-2xl"></i>
             </div>
           </div>
@@ -105,10 +105,16 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Slideshow */}
+        {/* Enhanced Slideshow with New Transitions */}
         <div className="relative h-full">
           {/* Slide 1: Arusha */}
-          <div className={`absolute inset-0 transition-all duration-800 ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+            currentSlide === 0 
+              ? 'opacity-100 transform translate-y-0' 
+              : currentSlide > 0 
+                ? 'opacity-0 transform -translate-y-full' 
+                : 'opacity-0 transform translate-y-full'
+          }`}>
             <div 
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{
@@ -157,7 +163,13 @@ const Index = () => {
           </div>
 
           {/* Slide 2: Kilimanjaro */}
-          <div className={`absolute inset-0 transition-all duration-800 ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+            currentSlide === 1 
+              ? 'opacity-100 transform translate-y-0' 
+              : currentSlide > 1 
+                ? 'opacity-0 transform -translate-y-full' 
+                : 'opacity-0 transform translate-y-full'
+          }`}>
             <div 
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{
@@ -180,11 +192,39 @@ const Index = () => {
                   Explore →
                 </Button>
               </div>
+              
+              <div className="flex flex-col gap-6 ml-8">
+                {[
+                  { title: "Uhuru Peak Summit", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" },
+                  { title: "Machame Route Trek", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }
+                ].map((card, index) => (
+                  <div key={index} className="w-72 h-48 rounded-2xl overflow-hidden relative cursor-pointer group hover:scale-105 transform transition-all duration-300">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-300"
+                      style={{ backgroundImage: `url('${card.bg}')` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
+                      ▶
+                    </div>
+                    <div className="absolute bottom-6 left-6 text-white">
+                      <h3 className="text-lg font-semibold mb-1">{card.title}</h3>
+                      <div className="text-sm">{card.rating}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Slide 3: Zanzibar */}
-          <div className={`absolute inset-0 transition-all duration-800 ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+            currentSlide === 2 
+              ? 'opacity-100 transform translate-y-0' 
+              : currentSlide < 2 
+                ? 'opacity-0 transform translate-y-full' 
+                : 'opacity-0 transform -translate-y-full'
+          }`}>
             <div 
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{
@@ -206,6 +246,28 @@ const Index = () => {
                 <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
                   Explore →
                 </Button>
+              </div>
+              
+              <div className="flex flex-col gap-6 ml-8">
+                {[
+                  { title: "Nungwi Beach", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" },
+                  { title: "Stone Town Historic Tour", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1587974928442-77dc3e4dba72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }
+                ].map((card, index) => (
+                  <div key={index} className="w-72 h-48 rounded-2xl overflow-hidden relative cursor-pointer group hover:scale-105 transform transition-all duration-300">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-300"
+                      style={{ backgroundImage: `url('${card.bg}')` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
+                      ▶
+                    </div>
+                    <div className="absolute bottom-6 left-6 text-white">
+                      <h3 className="text-lg font-semibold mb-1">{card.title}</h3>
+                      <div className="text-sm">{card.rating}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
