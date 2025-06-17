@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -92,7 +91,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section with Enhanced Slideshow */}
-      <section className="h-screen relative overflow-hidden">
+      <section className="h-screen relative overflow-hidden bg-black">
         {/* Logo Area */}
         <div className="fixed top-10 left-16 z-50 flex items-center gap-6 transition-all duration-300">
           <div className="flex items-center justify-center">
@@ -105,23 +104,23 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Enhanced Slideshow with New Transitions */}
+        {/* Enhanced Slideshow with Smooth Transitions */}
         <div className="relative h-full">
           {/* Slide 1: Arusha */}
           <div className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
             currentSlide === 0 
-              ? 'opacity-100 transform translate-y-0' 
+              ? 'opacity-100 transform translate-y-0 z-20' 
               : currentSlide > 0 
-                ? 'opacity-0 transform -translate-y-full' 
-                : 'opacity-0 transform translate-y-full'
+                ? 'opacity-0 transform -translate-y-full z-10' 
+                : 'opacity-0 transform translate-y-full z-10'
           }`}>
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-fixed"
+              className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
             <div className="relative z-10 h-full max-w-7xl mx-auto px-12 flex items-center">
               <div className="flex-1 max-w-2xl">
                 <div className="text-white/70 text-sm tracking-widest uppercase mb-4 animate-fade-in">
@@ -165,18 +164,18 @@ const Index = () => {
           {/* Slide 2: Kilimanjaro */}
           <div className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
             currentSlide === 1 
-              ? 'opacity-100 transform translate-y-0' 
+              ? 'opacity-100 transform translate-y-0 z-20' 
               : currentSlide > 1 
-                ? 'opacity-0 transform -translate-y-full' 
-                : 'opacity-0 transform translate-y-full'
+                ? 'opacity-0 transform -translate-y-full z-10' 
+                : 'opacity-0 transform translate-y-full z-10'
           }`}>
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-fixed"
+              className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
             <div className="relative z-10 h-full max-w-7xl mx-auto px-12 flex items-center">
               <div className="flex-1 max-w-2xl">
                 <div className="text-white/70 text-sm tracking-widest uppercase mb-4">
@@ -220,18 +219,18 @@ const Index = () => {
           {/* Slide 3: Zanzibar */}
           <div className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
             currentSlide === 2 
-              ? 'opacity-100 transform translate-y-0' 
+              ? 'opacity-100 transform translate-y-0 z-20' 
               : currentSlide < 2 
-                ? 'opacity-0 transform translate-y-full' 
-                : 'opacity-0 transform -translate-y-full'
+                ? 'opacity-0 transform translate-y-full z-10' 
+                : 'opacity-0 transform -translate-y-full z-10'
           }`}>
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-fixed"
+              className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
             <div className="relative z-10 h-full max-w-7xl mx-auto px-12 flex items-center">
               <div className="flex-1 max-w-2xl">
                 <div className="text-white/70 text-sm tracking-widest uppercase mb-4">
