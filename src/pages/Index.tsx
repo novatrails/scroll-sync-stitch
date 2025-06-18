@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import MobileNav from '@/components/MobileNav';
+import BookingModal from '@/components/BookingModal';
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const totalSlides = 3;
   const totalTestimonials = 3;
 
@@ -23,16 +25,7 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    // Auto-advance slideshow
-    const slideInterval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % totalSlides);
-    }, 6000);
-
-    return () => clearInterval(slideInterval);
-  }, []);
-
-  useEffect(() => {
-    // Auto-advance testimonials
+    // Auto-advance testimonials only
     const testimonialInterval = setInterval(() => {
       setCurrentTestimonial(prev => (prev + 1) % totalTestimonials);
     }, 5000);
@@ -81,10 +74,13 @@ const Index = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
               <a href="#" className="text-white hover:text-emerald-300 transition-colors duration-200">Home</a>
-              <a href="#destinations" className="text-white hover:text-emerald-300 transition-colors duration-200">Destinations</a>
-              <a href="#about" className="text-white hover:text-emerald-300 transition-colors duration-200">About</a>
-              <a href="#contact" className="text-white hover:text-emerald-300 transition-colors duration-200">Contact</a>
-              <Button className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200">
+              <Link to="/destinations" className="text-white hover:text-emerald-300 transition-colors duration-200">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-emerald-300 transition-colors duration-200">About</Link>
+              <Link to="/contact" className="text-white hover:text-emerald-300 transition-colors duration-200">Contact</Link>
+              <Button 
+                onClick={() => setBookingModalOpen(true)}
+                className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200"
+              >
                 Book Now
               </Button>
             </div>
@@ -104,12 +100,15 @@ const Index = () => {
             </button>
           </div>
         </div>
+        
+        <MobileNav 
+          isOpen={mobileMenuOpen} 
+          onToggle={toggleMobileMenu} 
+          onBookingOpen={() => setBookingModalOpen(true)}
+        />
       </nav>
 
-      {/* Mobile Navigation */}
-      <MobileNav isOpen={mobileMenuOpen} onToggle={toggleMobileMenu} />
-
-      {/* Hero Section with Enhanced Slideshow */}
+      {/* Hero Section with Manual Slideshow */}
       <section className="h-screen relative overflow-hidden bg-black">
         {/* Enhanced Slideshow with Smooth Transitions */}
         <div className="relative h-full">
@@ -122,21 +121,21 @@ const Index = () => {
                 : 'opacity-0 transform translate-y-full z-10'
           }`}>
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[2000ms]"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center">
-              <div className="flex-1 max-w-2xl">
-                <div className="text-white/70 text-xs sm:text-sm tracking-widest uppercase mb-4 animate-fade-in">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+              <div className="max-w-2xl">
+                <div className="text-orange-400 text-xs sm:text-sm tracking-widest uppercase mb-4 animate-fade-in">
                   Tanzania Destination
                 </div>
-                <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white mb-4 sm:mb-6 leading-none animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Arusha
                 </h1>
-                <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed animate-fade-in">
+                <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed animate-fade-in">
                   Gateway to Tanzania's northern safari circuit, Arusha offers vibrant markets, stunning views of Mount Meru, and rich cultural experiences.
                 </p>
                 <Link to="/arusha">
@@ -144,28 +143,6 @@ const Index = () => {
                     Explore →
                   </Button>
                 </Link>
-              </div>
-              
-              <div className="hidden lg:flex flex-col gap-6 ml-8">
-                {[
-                  { title: "Arusha National Park", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" },
-                  { title: "Cultural Heritage Centre", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1604999333679-b86d54738315?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }
-                ].map((card, index) => (
-                  <div key={index} className="w-72 h-48 rounded-2xl overflow-hidden relative cursor-pointer group hover:scale-105 transform transition-all duration-300">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-300"
-                      style={{ backgroundImage: `url('${card.bg}')` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
-                      ▶
-                    </div>
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <h3 className="text-lg font-semibold mb-1">{card.title}</h3>
-                      <div className="text-sm">{card.rating}</div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -179,21 +156,21 @@ const Index = () => {
                 : 'opacity-0 transform translate-y-full z-10'
           }`}>
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[2000ms]"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center">
-              <div className="flex-1 max-w-2xl">
-                <div className="text-white/70 text-xs sm:text-sm tracking-widest uppercase mb-4">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+              <div className="max-w-2xl">
+                <div className="text-orange-400 text-xs sm:text-sm tracking-widest uppercase mb-4">
                   Tanzania Destination
                 </div>
-                <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white mb-4 sm:mb-6 leading-none" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Kilimanjaro
                 </h1>
-                <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
+                <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
                   Conquer Africa's highest peak and stand on the roof of the continent. Experience diverse ecosystems from tropical rainforest to arctic summit.
                 </p>
                 <Link to="/kilimanjaro">
@@ -201,28 +178,6 @@ const Index = () => {
                     Explore →
                   </Button>
                 </Link>
-              </div>
-              
-              <div className="hidden lg:flex flex-col gap-6 ml-8">
-                {[
-                  { title: "Uhuru Peak Summit", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" },
-                  { title: "Machame Route Trek", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }
-                ].map((card, index) => (
-                  <div key={index} className="w-72 h-48 rounded-2xl overflow-hidden relative cursor-pointer group hover:scale-105 transform transition-all duration-300">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-300"
-                      style={{ backgroundImage: `url('${card.bg}')` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
-                      ▶
-                    </div>
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <h3 className="text-lg font-semibold mb-1">{card.title}</h3>
-                      <div className="text-sm">{card.rating}</div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -236,58 +191,36 @@ const Index = () => {
                 : 'opacity-0 transform -translate-y-full z-10'
           }`}>
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[2000ms]"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center">
-              <div className="flex-1 max-w-2xl">
-                <div className="text-white/70 text-xs sm:text-sm tracking-widest uppercase mb-4">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+              <div className="max-w-2xl">
+                <div className="text-turquoise-400 text-xs sm:text-sm tracking-widest uppercase mb-4">
                   Tanzania Destination
                 </div>
-                <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white mb-4 sm:mb-6 leading-none" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Zanzibar
                 </h1>
-                <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
+                <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
                   Paradise found in the Indian Ocean. Pristine white sand beaches, crystal clear waters, historic Stone Town, and rich Swahili culture.
                 </p>
                 <Link to="/zanzibar">
-                  <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
+                  <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
                     Explore →
                   </Button>
                 </Link>
-              </div>
-              
-              <div className="hidden lg:flex flex-col gap-6 ml-8">
-                {[
-                  { title: "Nungwi Beach", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" },
-                  { title: "Stone Town Historic Tour", rating: "⭐⭐⭐⭐⭐", bg: "https://images.unsplash.com/photo-1587974928442-77dc3e4dba72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }
-                ].map((card, index) => (
-                  <div key={index} className="w-72 h-48 rounded-2xl overflow-hidden relative cursor-pointer group hover:scale-105 transform transition-all duration-300">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-300"
-                      style={{ backgroundImage: `url('${card.bg}')` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
-                      ▶
-                    </div>
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <h3 className="text-lg font-semibold mb-1">{card.title}</h3>
-                      <div className="text-sm">{card.rating}</div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
         </div>
 
         {/* Navigation Controls */}
-        <div className="absolute bottom-8 left-4 sm:left-12 flex items-center gap-4 sm:gap-8 z-20">
-          <div className="flex gap-2 sm:gap-4">
+        <div className="absolute bottom-8 left-4 sm:left-8 flex items-center gap-4 z-20">
+          <div className="flex gap-2">
             <button 
               onClick={prevSlide}
               className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
@@ -307,7 +240,7 @@ const Index = () => {
         </div>
 
         {/* Progress Indicators */}
-        <div className="absolute bottom-8 right-4 sm:right-12 flex gap-2 z-20">
+        <div className="absolute bottom-8 right-4 sm:right-8 flex gap-2 z-20">
           {[0, 1, 2].map((index) => (
             <button
               key={index}
@@ -520,12 +453,17 @@ const Index = () => {
           <p className="text-lg sm:text-xl text-blue-100 mb-8 sm:mb-10 max-w-2xl mx-auto">Join thousands of adventurers who have discovered the extraordinary with Nova Trails. Your journey of a lifetime starts with a single step.</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-emerald-600 hover:bg-gray-100 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg">
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-white text-emerald-600 hover:bg-gray-100 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
               <i className="fas fa-compass mr-2"></i>Start Your Journey
             </Button>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300">
-              <i className="fas fa-phone mr-2"></i>Call Us Now
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300">
+                <i className="fas fa-phone mr-2"></i>Call Us Now
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -556,11 +494,12 @@ const Index = () => {
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Quick Links</h3>
               <ul className="space-y-2 sm:space-y-3">
-                {['About Us', 'Destinations', 'Tour Packages', 'Travel Tips', 'Gallery', 'Blog'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">{link}</a>
-                  </li>
-                ))}
+                <li><Link to="/about" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">About Us</Link></li>
+                <li><Link to="/destinations" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">Destinations</Link></li>
+                <li><a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">Tour Packages</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">Travel Tips</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">Gallery</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm sm:text-base">Blog</a></li>
               </ul>
             </div>
             
@@ -615,15 +554,15 @@ const Index = () => {
                 <a href="#" className="hover:text-emerald-400 transition-colors"> Privacy Policy</a> | 
                 <a href="#" className="hover:text-emerald-400 transition-colors"> Terms of Service</a>
               </p>
-              <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm text-gray-400">
-                <span>Designed with</span>
-                <i className="fas fa-heart text-red-500"></i>
-                <span>for adventurers worldwide</span>
-              </div>
             </div>
           </div>
         </div>
       </footer>
+
+      <BookingModal 
+        isOpen={bookingModalOpen} 
+        onClose={() => setBookingModalOpen(false)} 
+      />
     </div>
   );
 };

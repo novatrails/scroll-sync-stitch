@@ -1,64 +1,63 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 
 interface MobileNavProps {
   isOpen: boolean;
   onToggle: () => void;
+  onBookingOpen: () => void;
 }
 
-const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onToggle }) => {
+const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onToggle, onBookingOpen }) => {
   return (
-    <>
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-300 ${
-        isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`} onClick={onToggle} />
-      
-      {/* Mobile Menu Panel */}
-      <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gray-900/95 backdrop-blur-lg z-50 transform transition-transform duration-300 ease-in-out ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex justify-between items-center p-6 border-b border-gray-700/50">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-full flex items-center justify-center">
-                <i className="fas fa-mountain text-white text-sm"></i>
-              </div>
-              <span className="text-lg font-bold text-white">Nova Trails</span>
-            </div>
-            <button onClick={onToggle} className="text-white text-xl">
-              <i className="fas fa-times"></i>
-            </button>
+    <div className={`absolute top-16 left-0 right-0 bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 z-40 transform transition-all duration-300 ease-in-out ${
+      isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <nav className="flex flex-col space-y-4">
+          <Link 
+            to="/" 
+            className="text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2 text-center"
+            onClick={onToggle}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/destinations" 
+            className="text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2 text-center"
+            onClick={onToggle}
+          >
+            Destinations
+          </Link>
+          <Link 
+            to="/about" 
+            className="text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2 text-center"
+            onClick={onToggle}
+          >
+            About
+          </Link>
+          <Link 
+            to="/contact" 
+            className="text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2 text-center"
+            onClick={onToggle}
+          >
+            Contact
+          </Link>
+          <div className="pt-4">
+            <Button 
+              onClick={() => {
+                onBookingOpen();
+                onToggle();
+              }}
+              className="w-full bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-6 py-3 rounded-full transform hover:scale-105 transition-all duration-200"
+            >
+              Book Now
+            </Button>
           </div>
-          
-          {/* Navigation Links */}
-          <nav className="flex-1 px-6 py-8">
-            <div className="space-y-6">
-              <a href="#" className="block text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2">
-                Home
-              </a>
-              <a href="#destinations" className="block text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2">
-                Destinations
-              </a>
-              <a href="#about" className="block text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2">
-                About
-              </a>
-              <a href="#contact" className="block text-white text-lg hover:text-emerald-300 transition-colors duration-200 py-2">
-                Contact
-              </a>
-            </div>
-            
-            <div className="mt-8">
-              <Button className="w-full bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-6 py-3 rounded-full transform hover:scale-105 transition-all duration-200">
-                Book Now
-              </Button>
-            </div>
-          </nav>
-        </div>
+        </nav>
       </div>
-    </>
+    </div>
   );
 };
 

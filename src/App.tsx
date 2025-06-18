@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import Arusha from "./pages/Arusha";
 import Kilimanjaro from "./pages/Kilimanjaro";
 import Zanzibar from "./pages/Zanzibar";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Destinations from "./pages/Destinations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/arusha" element={<Arusha />} />
           <Route path="/kilimanjaro" element={<Kilimanjaro />} />
           <Route path="/zanzibar" element={<Zanzibar />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/destinations" element={<Destinations />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
+import MobileNav from '@/components/MobileNav';
+import BookingModal from '@/components/BookingModal';
 
 const Zanzibar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -18,12 +27,37 @@ const Zanzibar = () => {
             
             <div className="hidden md:flex space-x-8">
               <Link to="/" className="text-white hover:text-emerald-300 transition-colors duration-200">Home</Link>
-              <a href="/#destinations" className="text-white hover:text-emerald-300 transition-colors duration-200">Destinations</a>
-              <a href="/#about" className="text-white hover:text-emerald-300 transition-colors duration-200">About</a>
-              <a href="/#contact" className="text-white hover:text-emerald-300 transition-colors duration-200">Contact</a>
+              <Link to="/destinations" className="text-white hover:text-emerald-300 transition-colors duration-200">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-emerald-300 transition-colors duration-200">About</Link>
+              <Link to="/contact" className="text-white hover:text-emerald-300 transition-colors duration-200">Contact</Link>
+              <Button 
+                onClick={() => setBookingModalOpen(true)}
+                className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200"
+              >
+                Book Now
+              </Button>
             </div>
+            
+            <button 
+              className="md:hidden text-white z-50 relative"
+              onClick={toggleMobileMenu}
+            >
+              <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
+                {mobileMenuOpen ? (
+                  <i className="fas fa-times text-xl"></i>
+                ) : (
+                  <i className="fas fa-bars text-xl"></i>
+                )}
+              </div>
+            </button>
           </div>
         </div>
+        
+        <MobileNav 
+          isOpen={mobileMenuOpen} 
+          onToggle={toggleMobileMenu} 
+          onBookingOpen={() => setBookingModalOpen(true)}
+        />
       </nav>
 
       {/* Hero Section */}
@@ -47,7 +81,10 @@ const Zanzibar = () => {
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
               Escape to pristine beaches, historic Stone Town, and rich Swahili culture. Experience paradise in the Indian Ocean.
             </p>
-            <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in">
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
+            >
               Explore Paradise
             </Button>
           </div>
@@ -110,12 +147,17 @@ const Zanzibar = () => {
             Book your Zanzibar getaway and experience the perfect blend of culture, adventure, and relaxation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+            >
               Book Zanzibar Trip
             </Button>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
-              View Packages
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
+                View Packages
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -138,8 +180,8 @@ const Zanzibar = () => {
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li><Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Home</Link></li>
-                <li><a href="/#destinations" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Destinations</a></li>
-                <li><a href="/#about" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">About</a></li>
+                <li><Link to="/destinations" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Destinations</Link></li>
+                <li><Link to="/about" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">About</Link></li>
               </ul>
             </div>
             
@@ -168,6 +210,12 @@ const Zanzibar = () => {
           </div>
         </div>
       </footer>
+
+      <BookingModal 
+        isOpen={bookingModalOpen} 
+        onClose={() => setBookingModalOpen(false)} 
+        packageType="Zanzibar Paradise"
+      />
     </div>
   );
 };

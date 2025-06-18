@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 
-const Arusha = () => {
+const About = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const Arusha = () => {
             <div className="hidden md:flex space-x-8">
               <Link to="/" className="text-white hover:text-emerald-300 transition-colors duration-200">Home</Link>
               <Link to="/destinations" className="text-white hover:text-emerald-300 transition-colors duration-200">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-emerald-300 transition-colors duration-200">About</Link>
+              <Link to="/about" className="text-emerald-300 font-semibold">About</Link>
               <Link to="/contact" className="text-white hover:text-emerald-300 transition-colors duration-200">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
@@ -65,74 +66,146 @@ const Arusha = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
         
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-          <div className="max-w-3xl">
-            <div className="text-orange-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
-              Gateway to Northern Tanzania
+          <div className="max-w-4xl">
+            <div className="text-emerald-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
+              Discover Our Story
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Discover Arusha
+              About Nova Trails
             </h1>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
-              Experience the vibrant culture, stunning landscapes, and incredible wildlife that make Arusha the perfect starting point for your Tanzanian adventure.
+            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-3xl leading-relaxed animate-fade-in">
+              We are passionate explorers, dedicated to creating extraordinary travel experiences that connect you with Tanzania's most incredible destinations and rich cultural heritage.
             </p>
             <Button 
               onClick={() => setBookingModalOpen(true)}
-              className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
+              className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
             >
-              Plan Your Visit
+              Start Your Journey
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Attractions Section */}
+      {/* Our Story Section */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Story</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Founded in 2018 by a group of passionate travelers who fell in love with Tanzania's breathtaking landscapes and vibrant culture, Nova Trails was born from a desire to share these incredible experiences with the world.
+              </p>
+              <p className="text-lg text-gray-600 mb-6">
+                What started as a small local guiding service has grown into a trusted travel partner, connecting adventurers from around the globe with authentic Tanzanian experiences. We believe that travel should be transformative, sustainable, and deeply meaningful.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">500+</div>
+                  <div className="text-gray-600">Happy Travelers</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">50+</div>
+                  <div className="text-gray-600">Destinations</div>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Our team" 
+                className="rounded-2xl shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
       <section className="py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Top Attractions</h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">Explore the best that Arusha has to offer, from national parks to cultural experiences</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Values</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              The principles that guide everything we do
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Arusha National Park",
-                description: "Home to diverse wildlife including flamingos, giraffes, and buffalo with stunning views of Mount Meru",
-                image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                features: ["Wildlife Viewing", "Mount Meru Views", "Crater Lakes"]
+                icon: "fas fa-leaf",
+                title: "Sustainability",
+                description: "We're committed to responsible tourism that protects Tanzania's natural beauty and supports local communities."
               },
               {
-                title: "Cultural Heritage Centre",
-                description: "Discover Tanzania's rich cultural heritage through art, crafts, and historical exhibitions",
-                image: "https://images.unsplash.com/photo-1604999333679-b86d54738315?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                features: ["Art Gallery", "Cultural Exhibits", "Local Crafts"]
+                icon: "fas fa-heart",
+                title: "Authenticity",
+                description: "Every experience we offer is genuine, connecting you with the real Tanzania through local guides and communities."
               },
               {
-                title: "Maasai Markets",
-                description: "Experience authentic local culture and shop for traditional crafts, jewelry, and textiles",
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                features: ["Traditional Crafts", "Local Culture", "Shopping"]
+                icon: "fas fa-star",
+                title: "Excellence",
+                description: "We strive for perfection in every detail, ensuring your journey exceeds all expectations."
               }
-            ].map((attraction, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${attraction.image}')` }} />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{attraction.title}</h3>
-                  <p className="text-gray-600 mb-4">{attraction.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {attraction.features.map((feature, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
+            ].map((value, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <i className={`${value.icon} text-emerald-600 text-2xl`}></i>
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h3>
+                <p className="text-gray-600">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              Passionate professionals dedicated to creating unforgettable experiences
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Amani Mwalimu",
+                role: "Founder & CEO",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                description: "Born and raised in Arusha, Amani has been guiding travelers for over 15 years."
+              },
+              {
+                name: "Sarah Johnson",
+                role: "Operations Manager",
+                image: "https://images.unsplash.com/photo-1494790108755-2616b612b743?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                description: "Sarah ensures every detail of your journey is perfectly planned and executed."
+              },
+              {
+                name: "Daniel Kimaro",
+                role: "Lead Safari Guide",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                description: "Daniel's knowledge of wildlife and passion for conservation enhances every safari."
+              }
+            ].map((member, index) => (
+              <div key={index} className="text-center">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-emerald-600 font-medium mb-3">{member.role}</p>
+                <p className="text-gray-600 text-sm">{member.description}</p>
               </div>
             ))}
           </div>
@@ -142,16 +215,16 @@ const Arusha = () => {
       {/* CTA Section */}
       <section className="py-16 lg:py-20 bg-gradient-to-r from-emerald-600 to-blue-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Ready to Explore Arusha?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Ready to Explore Tanzania?</h2>
           <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Book your Arusha adventure today and discover the gateway to Tanzania's incredible northern circuit.
+            Join hundreds of satisfied travelers who have discovered the magic of Tanzania with Nova Trails.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={() => setBookingModalOpen(true)}
               className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
             >
-              Book Arusha Tour
+              Book Your Adventure
             </Button>
             <Link to="/contact">
               <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
@@ -214,10 +287,9 @@ const Arusha = () => {
       <BookingModal 
         isOpen={bookingModalOpen} 
         onClose={() => setBookingModalOpen(false)} 
-        packageType="Arusha Explorer"
       />
     </div>
   );
 };
 
-export default Arusha;
+export default About;
