@@ -1,11 +1,13 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
+import MobileNav from '@/components/MobileNav';
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const totalSlides = 3;
   const totalTestimonials = 3;
 
@@ -37,6 +39,10 @@ const Index = () => {
 
     return () => clearInterval(testimonialInterval);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % totalSlides);
@@ -84,12 +90,24 @@ const Index = () => {
             </div>
             
             {/* Mobile Menu Button */}
-            <button className="md:hidden text-white">
-              <i className="fas fa-bars text-xl"></i>
+            <button 
+              className="md:hidden text-white z-50 relative"
+              onClick={toggleMobileMenu}
+            >
+              <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
+                {mobileMenuOpen ? (
+                  <i className="fas fa-times text-xl"></i>
+                ) : (
+                  <i className="fas fa-bars text-xl"></i>
+                )}
+              </div>
             </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Navigation */}
+      <MobileNav isOpen={mobileMenuOpen} onToggle={toggleMobileMenu} />
 
       {/* Hero Section with Enhanced Slideshow */}
       <section className="h-screen relative overflow-hidden bg-black">
@@ -109,7 +127,7 @@ const Index = () => {
                 backgroundImage: `url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
             <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center">
               <div className="flex-1 max-w-2xl">
                 <div className="text-white/70 text-xs sm:text-sm tracking-widest uppercase mb-4 animate-fade-in">
@@ -121,9 +139,11 @@ const Index = () => {
                 <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed animate-fade-in">
                   Gateway to Tanzania's northern safari circuit, Arusha offers vibrant markets, stunning views of Mount Meru, and rich cultural experiences.
                 </p>
-                <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in">
-                  Explore →
-                </Button>
+                <Link to="/arusha">
+                  <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in">
+                    Explore →
+                  </Button>
+                </Link>
               </div>
               
               <div className="hidden lg:flex flex-col gap-6 ml-8">
@@ -164,7 +184,7 @@ const Index = () => {
                 backgroundImage: `url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
             <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center">
               <div className="flex-1 max-w-2xl">
                 <div className="text-white/70 text-xs sm:text-sm tracking-widest uppercase mb-4">
@@ -176,9 +196,11 @@ const Index = () => {
                 <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
                   Conquer Africa's highest peak and stand on the roof of the continent. Experience diverse ecosystems from tropical rainforest to arctic summit.
                 </p>
-                <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
-                  Explore →
-                </Button>
+                <Link to="/kilimanjaro">
+                  <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
+                    Explore →
+                  </Button>
+                </Link>
               </div>
               
               <div className="hidden lg:flex flex-col gap-6 ml-8">
@@ -219,7 +241,7 @@ const Index = () => {
                 backgroundImage: `url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
             <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center">
               <div className="flex-1 max-w-2xl">
                 <div className="text-white/70 text-xs sm:text-sm tracking-widest uppercase mb-4">
@@ -231,9 +253,11 @@ const Index = () => {
                 <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
                   Paradise found in the Indian Ocean. Pristine white sand beaches, crystal clear waters, historic Stone Town, and rich Swahili culture.
                 </p>
-                <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
-                  Explore →
-                </Button>
+                <Link to="/zanzibar">
+                  <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform hover:scale-105 transition-all duration-300">
+                    Explore →
+                  </Button>
+                </Link>
               </div>
               
               <div className="hidden lg:flex flex-col gap-6 ml-8">
