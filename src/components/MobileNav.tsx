@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -10,19 +10,37 @@ interface MobileNavProps {
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onToggle, onBookingOpen }) => {
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    onToggle();
+  };
+
   return (
     <div className={`absolute top-16 left-0 right-0 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50 z-40 transform transition-all duration-300 ease-in-out ${
       isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <nav className="flex flex-col space-y-4">
-          <Link 
-            to="/" 
-            className="text-white text-lg hover:text-cream-300 transition-colors duration-200 py-2 text-center nav-button-hover"
-            onClick={onToggle}
-          >
-            Home
-          </Link>
+          {location.pathname === '/' ? (
+            <button 
+              onClick={handleHomeClick}
+              className="text-white text-lg hover:text-cream-300 transition-colors duration-200 py-2 text-center nav-button-hover"
+            >
+              Home
+            </button>
+          ) : (
+            <Link 
+              to="/" 
+              className="text-white text-lg hover:text-cream-300 transition-colors duration-200 py-2 text-center nav-button-hover"
+              onClick={onToggle}
+            >
+              Home
+            </Link>
+          )}
           <Link 
             to="/destinations" 
             className="text-white text-lg hover:text-cream-300 transition-colors duration-200 py-2 text-center nav-button-hover"

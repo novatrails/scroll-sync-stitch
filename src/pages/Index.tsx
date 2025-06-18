@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
+import { Cheetah, Lion, Monkey } from 'lucide-react';
 import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 import HeroCarousel from '@/components/HeroCarousel';
@@ -39,8 +39,18 @@ const Index = () => {
     setCurrentTestimonial(index);
   };
 
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="overflow-x-hidden">
+      {/* Wildlife Background Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <Cheetah className="cheetah-animation w-16 h-16 text-sage-300" />
+        <Lion className="lion-animation w-20 h-20 text-terracotta-300" />
+      </div>
+
       {/* Transparent Header that becomes visible on scroll */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${
         headerVisible 
@@ -49,19 +59,22 @@ const Index = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
-                alt="Nova Trails Logo" 
-                className="w-8 h-8 sm:w-10 sm:h-10"
-              />
+            {/* Logo with animated monkey */}
+            <div className="flex items-center space-x-2 relative">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
+                  alt="Nova Trails Logo" 
+                  className="w-8 h-8 sm:w-10 sm:h-10 relative z-10"
+                />
+                <Monkey className="monkey-animation w-6 h-6 text-terracotta-500 top-0 left-8" />
+              </div>
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </div>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              <a href="#" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Home</a>
+              <button onClick={handleHomeClick} className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Home</button>
               <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Destinations</Link>
               <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">About</Link>
               <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Contact</Link>
@@ -99,7 +112,7 @@ const Index = () => {
       {/* Hero Carousel Section */}
       <HeroCarousel />
 
-      {/* Featured Destinations */}
+      {/* Featured Destinations with Enhanced Cards */}
       <section id="destinations" className="py-12 sm:py-16 lg:py-20 bg-cream-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
@@ -113,34 +126,49 @@ const Index = () => {
                 title: "Serengeti Safari",
                 location: "Northern Tanzania",
                 description: "Witness the Great Migration and encounter Africa's Big Five in their natural habitat",
-                image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                price: "From $2,500",
+                duration: "7 Days"
               },
               {
                 title: "Ngorongoro Crater",
                 location: "Arusha Region",
                 description: "Explore the world's largest inactive volcanic caldera, home to diverse wildlife",
-                image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                price: "From $1,800",
+                duration: "5 Days"
               },
               {
                 title: "Stone Town Heritage",
                 location: "Zanzibar",
                 description: "Discover the historic heart of Zanzibar with its rich Swahili culture and architecture",
-                image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                price: "From $1,200",
+                duration: "4 Days"
               }
             ].map((destination, index) => (
-              <div key={index} className="relative overflow-hidden rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-2xl transition-all duration-300 group cursor-pointer nav-button-hover">
+              <div key={index} className="relative overflow-hidden rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-2xl transition-all duration-300 group cursor-pointer nav-button-hover bg-white">
                 <div 
-                  className="h-64 sm:h-80 bg-cover bg-center"
+                  className="h-64 sm:h-80 bg-cover bg-center relative"
                   style={{ backgroundImage: `url('${destination.image}')` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent group-hover:from-black group-hover:via-black/20 transition-all duration-300"></div>
+                  <div className="absolute top-4 right-4 bg-terracotta-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    {destination.duration}
+                  </div>
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white">
                     <div className="flex items-center mb-2">
                       <i className="fas fa-map-marker-alt text-terracotta-400 mr-2"></i>
                       <span className="text-xs sm:text-sm font-medium">{destination.location}</span>
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold mb-2">{destination.title}</h3>
-                    <p className="text-sm sm:text-base text-gray-200 group-hover:text-white transition-colors duration-300">{destination.description}</p>
+                    <p className="text-sm sm:text-base text-gray-200 group-hover:text-white transition-colors duration-300 mb-3">{destination.description}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-terracotta-300 font-bold text-lg">{destination.price}</span>
+                      <Button className="bg-terracotta-500 hover:bg-terracotta-600 text-white px-4 py-2 rounded-full text-sm">
+                        View Details
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -306,19 +334,26 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-sage-900 text-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Enhanced Footer with Wildlife Theme */}
+      <footer id="contact" className="bg-sage-900 text-white py-12 sm:py-16 relative overflow-hidden">
+        {/* Wildlife Background Elements */}
+        <div className="absolute inset-0 pointer-events-none opacity-10">
+          <Cheetah className="absolute top-10 right-20 w-32 h-32 text-terracotta-300" />
+          <Lion className="absolute bottom-10 left-20 w-28 h-28 text-sage-300" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             {/* Company Info */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+              <div className="flex items-center space-x-2 mb-4 sm:mb-6 relative">
                 <img 
                   src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
                   alt="Nova Trails Logo" 
                   className="w-8 h-8 sm:w-10 sm:h-10"
                 />
                 <span className="text-xl sm:text-2xl font-bold">Nova Trails</span>
+                <Monkey className="monkey-animation w-4 h-4 text-terracotta-400 top-0 left-20" />
               </div>
               <p className="text-cream-200 mb-4 sm:mb-6 text-sm sm:text-base">Discover what's never been found. We create extraordinary adventures that connect you with the world's most incredible destinations.</p>
               <div className="flex space-x-4">

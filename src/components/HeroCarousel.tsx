@@ -45,14 +45,17 @@ const slides: CarouselSlide[] = [
 
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      }, 6000); // 6 seconds per slide
 
-    return () => clearInterval(interval);
-  }, []);
+      return () => clearInterval(interval);
+    }
+  }, [isPaused]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -67,7 +70,11 @@ const HeroCarousel: React.FC = () => {
   };
 
   return (
-    <section className="h-screen relative overflow-hidden bg-black">
+    <section 
+      className="h-screen relative overflow-hidden bg-black"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <div className="relative h-full">
         {slides.map((slide, index) => (
           <div
@@ -79,7 +86,7 @@ const HeroCarousel: React.FC = () => {
             }`}
           >
             <div 
-              className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[3000ms] hover:scale-105"
+              className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[8000ms] hover:scale-105"
               style={{
                 backgroundImage: `url('${slide.image}')`
               }}
@@ -96,11 +103,19 @@ const HeroCarousel: React.FC = () => {
                 <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed animate-fade-in">
                   {slide.description}
                 </p>
-                <Link to={slide.link}>
-                  <Button className={`bg-gradient-to-r ${slide.gradientColors} hover:scale-105 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform transition-all duration-300 animate-fade-in nav-button-hover`}>
-                    {slide.buttonText} →
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link to={slide.link}>
+                    <Button className={`bg-gradient-to-r ${slide.gradientColors} hover:scale-105 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform transition-all duration-300 animate-fade-in nav-button-hover`}>
+                      {slide.buttonText} →
+                    </Button>
+                  </Link>
+                  <Button 
+                    variant="outline" 
+                    className="border-2 border-white text-white hover:bg-white hover:text-sage-900 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform transition-all duration-300 animate-fade-in nav-button-hover"
+                  >
+                    View Gallery
                   </Button>
-                </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -134,11 +149,19 @@ const HeroCarousel: React.FC = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 nav-button-hover ${
-              index === currentSlide ? 'bg-cream-200 w-6' : 'bg-cream-100/40'
+            className={`h-2 rounded-full transition-all duration-300 nav-button-hover ${
+              index === currentSlide ? 'bg-cream-200 w-8' : 'bg-cream-100/40 w-2'
             }`}
           />
         ))}
+      </div>
+
+      {/* Auto-play indicator */}
+      <div className="absolute top-8 right-4 sm:right-8 z-30">
+        <div className="flex items-center space-x-2 text-white/60 text-sm">
+          <div className={`w-2 h-2 rounded-full ${isPaused ? 'bg-red-400' : 'bg-green-400'} animate-pulse`}></div>
+          <span>{isPaused ? 'Paused' : 'Auto'}</span>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
