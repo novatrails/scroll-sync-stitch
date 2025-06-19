@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -15,24 +16,26 @@ const Zanzibar = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50">
+      <nav className="fixed w-full z-50 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-full flex items-center justify-center">
-                <i className="fas fa-mountain text-white text-sm sm:text-lg"></i>
-              </div>
+              <img 
+                src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
+                alt="Nova Trails Logo" 
+                className="w-8 h-8 sm:w-10 sm:h-10"
+              />
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="hidden md:flex space-x-8">
-              <Link to="/" className="text-white hover:text-emerald-300 transition-colors duration-200">Home</Link>
-              <Link to="/destinations" className="text-white hover:text-emerald-300 transition-colors duration-200">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-emerald-300 transition-colors duration-200">About</Link>
-              <Link to="/contact" className="text-white hover:text-emerald-300 transition-colors duration-200">Contact</Link>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
+              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
+              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
               >
                 Book Now
               </Button>
@@ -43,11 +46,7 @@ const Zanzibar = () => {
               onClick={toggleMobileMenu}
             >
               <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
-                {mobileMenuOpen ? (
-                  <i className="fas fa-times text-xl"></i>
-                ) : (
-                  <i className="fas fa-bars text-xl"></i>
-                )}
+                {mobileMenuOpen ? '✕' : '☰'}
               </div>
             </button>
           </div>
@@ -72,7 +71,7 @@ const Zanzibar = () => {
         
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">
-            <div className="text-turquoise-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
+            <div className="text-terracotta-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
               Spice Island Paradise
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
@@ -83,7 +82,7 @@ const Zanzibar = () => {
             </p>
             <Button 
               onClick={() => setBookingModalOpen(true)}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
+              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
             >
               Explore Paradise
             </Button>
@@ -92,11 +91,11 @@ const Zanzibar = () => {
       </section>
 
       {/* Experiences Section */}
-      <section className="py-16 lg:py-20 bg-gray-50">
+      <section className="py-16 lg:py-20 bg-cream-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Island Experiences</h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">Discover the magic of Zanzibar through unforgettable experiences</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Island Experiences</h2>
+            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">Discover the magic of Zanzibar through unforgettable experiences</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -123,11 +122,11 @@ const Zanzibar = () => {
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${experience.image}')` }} />
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{experience.title}</h3>
-                  <p className="text-gray-600 mb-4">{experience.description}</p>
+                  <h3 className="text-xl font-bold text-sage-900 mb-3">{experience.title}</h3>
+                  <p className="text-sage-600 mb-4">{experience.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {experience.highlights.map((highlight, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-cyan-100 text-cyan-700 text-sm rounded-full">
+                      <span key={idx} className="px-3 py-1 bg-terracotta-100 text-terracotta-700 text-sm rounded-full">
                         {highlight}
                       </span>
                     ))}
@@ -140,21 +139,21 @@ const Zanzibar = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-20 bg-gradient-to-r from-cyan-500 to-blue-500">
+      <section className="py-16 lg:py-20 bg-gradient-to-r from-sage-600 to-terracotta-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Ready for Paradise?</h2>
-          <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-cream-100 mb-8 max-w-2xl mx-auto">
             Book your Zanzibar getaway and experience the perfect blend of culture, adventure, and relaxation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={() => setBookingModalOpen(true)}
-              className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+              className="bg-white text-sage-600 hover:bg-cream-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
             >
               Book Zanzibar Trip
             </Button>
             <Link to="/contact">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-cyan-600 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sage-600 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
                 View Packages
               </Button>
             </Link>
@@ -162,51 +161,53 @@ const Zanzibar = () => {
         </div>
       </section>
 
-      {/* Footer - Same as others */}
-      <footer className="bg-gray-900 text-white py-12">
+      {/* Footer */}
+      <footer className="bg-sage-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-full flex items-center justify-center">
-                  <i className="fas fa-mountain text-white text-sm"></i>
-                </div>
+                <img 
+                  src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
+                  alt="Nova Trails Logo" 
+                  className="w-8 h-8"
+                />
                 <span className="text-xl font-bold">Nova Trails</span>
               </div>
-              <p className="text-gray-400 text-sm">Your gateway to extraordinary Tanzanian adventures.</p>
+              <p className="text-cream-400 text-sm">Your gateway to extraordinary Tanzanian adventures.</p>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><Link to="/" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Home</Link></li>
-                <li><Link to="/destinations" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Destinations</Link></li>
-                <li><Link to="/about" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">About</Link></li>
+                <li><Link to="/" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">Home</Link></li>
+                <li><Link to="/destinations" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">Destinations</Link></li>
+                <li><Link to="/about" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">About</Link></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <div className="space-y-2 text-sm text-gray-400">
-                <p><i className="fas fa-phone mr-2"></i>+1 (555) 123-NOVA</p>
-                <p><i className="fas fa-envelope mr-2"></i>info@novatrails.com</p>
+              <div className="space-y-2 text-sm text-cream-400">
+                <p>+1 (555) 123-NOVA</p>
+                <p>info@novatrails.com</p>
               </div>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                {['facebook-f', 'instagram', 'twitter'].map((social) => (
-                  <a key={social} href="#" className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors">
-                    <i className={`fab fa-${social} text-sm`}></i>
+                {['Facebook', 'Instagram', 'Twitter'].map((social) => (
+                  <a key={social} href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                    <span className="text-xs">{social[0]}</span>
                   </a>
                 ))}
               </div>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-6">
-            <p className="text-center text-gray-400 text-sm">© 2025 Nova Trails. All rights reserved.</p>
+          <div className="border-t border-sage-800 mt-8 pt-6">
+            <p className="text-center text-cream-400 text-sm">© 2025 Nova Trails. All rights reserved.</p>
           </div>
         </div>
       </footer>

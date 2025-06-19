@@ -1,7 +1,7 @@
+
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import { Rabbit, Fish, Bird } from 'lucide-react';
 import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 import HeroCarousel from '@/components/HeroCarousel';
@@ -45,12 +45,6 @@ const Index = () => {
 
   return (
     <div className="overflow-x-hidden">
-      {/* Wildlife Background Elements */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <Rabbit className="cheetah-animation w-16 h-16 text-sage-300" />
-        <Fish className="lion-animation w-20 h-20 text-terracotta-300" />
-      </div>
-
       {/* Transparent Header that becomes visible on scroll */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${
         headerVisible 
@@ -59,28 +53,25 @@ const Index = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo with animated monkey */}
-            <div className="flex items-center space-x-2 relative">
-              <div className="relative">
-                <img 
-                  src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
-                  alt="Nova Trails Logo" 
-                  className="w-8 h-8 sm:w-10 sm:h-10 relative z-10"
-                />
-                <Bird className="monkey-animation w-6 h-6 text-terracotta-500 top-0 left-8" />
-              </div>
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <img 
+                src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
+                alt="Nova Trails Logo" 
+                className="w-8 h-8 sm:w-10 sm:h-10"
+              />
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </div>
             
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              <button onClick={handleHomeClick} className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Home</button>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 nav-button-hover">Contact</Link>
+            {/* Desktop Menu - Improved Layout */}
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={handleHomeClick} className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</button>
+              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
+              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 nav-button-hover"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
               >
                 Book Now
               </Button>
@@ -88,15 +79,11 @@ const Index = () => {
             
             {/* Mobile Menu Button */}
             <button 
-              className="md:hidden text-white z-50 relative nav-button-hover"
+              className="md:hidden text-white z-50 relative"
               onClick={toggleMobileMenu}
             >
               <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
-                {mobileMenuOpen ? (
-                  <i className="fas fa-times text-xl"></i>
-                ) : (
-                  <i className="fas fa-bars text-xl"></i>
-                )}
+                {mobileMenuOpen ? '✕' : '☰'}
               </div>
             </button>
           </div>
@@ -147,7 +134,7 @@ const Index = () => {
                 duration: "4 Days"
               }
             ].map((destination, index) => (
-              <div key={index} className="relative overflow-hidden rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-2xl transition-all duration-300 group cursor-pointer nav-button-hover bg-white">
+              <div key={index} className="relative overflow-hidden rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-2xl transition-all duration-300 group cursor-pointer bg-white">
                 <div 
                   className="h-64 sm:h-80 bg-cover bg-center relative"
                   style={{ backgroundImage: `url('${destination.image}')` }}
@@ -158,7 +145,6 @@ const Index = () => {
                   </div>
                   <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white">
                     <div className="flex items-center mb-2">
-                      <i className="fas fa-map-marker-alt text-terracotta-400 mr-2"></i>
                       <span className="text-xs sm:text-sm font-medium">{destination.location}</span>
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold mb-2">{destination.title}</h3>
@@ -188,22 +174,16 @@ const Index = () => {
               <div className="space-y-4 sm:space-y-6">
                 {[
                   {
-                    icon: "fas fa-route",
-                    iconColor: "text-terracotta-600",
                     bgColor: "bg-terracotta-100",
                     title: "Unique Destinations",
                     description: "Access to hidden gems and off-the-beaten-path locations that few have experienced"
                   },
                   {
-                    icon: "fas fa-users",
-                    iconColor: "text-sage-600",
                     bgColor: "bg-sage-100",
                     title: "Expert Guides",
                     description: "Local experts who share their knowledge, culture, and passion for their homeland"
                   },
                   {
-                    icon: "fas fa-leaf",
-                    iconColor: "text-cream-600",
                     bgColor: "bg-cream-100",
                     title: "Sustainable Travel",
                     description: "Committed to responsible tourism that benefits local communities and preserves nature"
@@ -211,7 +191,7 @@ const Index = () => {
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start space-x-4">
                     <div className={`w-10 h-10 sm:w-12 sm:h-12 ${feature.bgColor} rounded-full flex items-center justify-center flex-shrink-0`}>
-                      <i className={`${feature.icon} ${feature.iconColor} text-sm sm:text-base`}></i>
+                      <div className="w-3 h-3 bg-sage-600 rounded-full"></div>
                     </div>
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-sage-900 mb-2">{feature.title}</h3>
@@ -231,7 +211,7 @@ const Index = () => {
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-terracotta-500 to-sage-600 rounded-full flex items-center justify-center shadow-lg">
-                <i className="fas fa-star text-white text-lg sm:text-xl lg:text-2xl"></i>
+                <div className="w-8 h-8 bg-white rounded-full"></div>
               </div>
             </div>
           </div>
@@ -273,7 +253,7 @@ const Index = () => {
                   <div className="flex justify-center mb-4 sm:mb-6">
                     <div className="flex space-x-1">
                       {[...Array(5)].map((_, i) => (
-                        <i key={i} className="fas fa-star text-terracotta-400 text-sm sm:text-base"></i>
+                        <div key={i} className="w-5 h-5 bg-terracotta-400 rounded-full"></div>
                       ))}
                     </div>
                   </div>
@@ -299,7 +279,7 @@ const Index = () => {
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
-                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 nav-button-hover ${
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                     index === currentTestimonial ? 'bg-terracotta-500' : 'bg-sage-300'
                   }`}
                 />
@@ -312,22 +292,19 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-sage-600 to-terracotta-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-6 sm:mb-8 animate-pulse">
-            <i className="fas fa-paper-plane text-4xl sm:text-5xl lg:text-6xl text-white opacity-80"></i>
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">Ready for Your Next Adventure?</h2>
           <p className="text-lg sm:text-xl text-cream-100 mb-8 sm:mb-10 max-w-2xl mx-auto">Join thousands of adventurers who have discovered the extraordinary with Nova Trails. Your journey of a lifetime starts with a single step.</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={() => setBookingModalOpen(true)}
-              className="bg-white text-sage-600 hover:bg-cream-100 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg nav-button-hover"
+              className="bg-white text-sage-600 hover:bg-cream-100 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              <i className="fas fa-compass mr-2"></i>Start Your Journey
+              Start Your Journey
             </Button>
             <Link to="/contact">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sage-600 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300 nav-button-hover">
-                <i className="fas fa-phone mr-2"></i>Call Us Now
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sage-600 px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold transform hover:scale-105 transition-all duration-300">
+                Call Us Now
               </Button>
             </Link>
           </div>
@@ -336,30 +313,23 @@ const Index = () => {
 
       {/* Enhanced Footer with Wildlife Theme */}
       <footer id="contact" className="bg-sage-900 text-white py-12 sm:py-16 relative overflow-hidden">
-        {/* Wildlife Background Elements */}
-        <div className="absolute inset-0 pointer-events-none opacity-10">
-          <Rabbit className="absolute top-10 right-20 w-32 h-32 text-terracotta-300" />
-          <Fish className="absolute bottom-10 left-20 w-28 h-28 text-sage-300" />
-        </div>
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             {/* Company Info */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <div className="flex items-center space-x-2 mb-4 sm:mb-6 relative">
+              <div className="flex items-center space-x-2 mb-4 sm:mb-6">
                 <img 
                   src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
                   alt="Nova Trails Logo" 
                   className="w-8 h-8 sm:w-10 sm:h-10"
                 />
                 <span className="text-xl sm:text-2xl font-bold">Nova Trails</span>
-                <Bird className="monkey-animation w-4 h-4 text-terracotta-400 top-0 left-20" />
               </div>
               <p className="text-cream-200 mb-4 sm:mb-6 text-sm sm:text-base">Discover what's never been found. We create extraordinary adventures that connect you with the world's most incredible destinations.</p>
               <div className="flex space-x-4">
-                {['facebook-f', 'instagram', 'twitter', 'youtube'].map((social) => (
-                  <a key={social} href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors nav-button-hover">
-                    <i className={`fab fa-${social} text-sm sm:text-base`}></i>
+                {['Facebook', 'Instagram', 'Twitter', 'YouTube'].map((social) => (
+                  <a key={social} href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                    <span className="text-xs">{social[0]}</span>
                   </a>
                 ))}
               </div>
@@ -369,12 +339,11 @@ const Index = () => {
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Quick Links</h3>
               <ul className="space-y-2 sm:space-y-3">
-                <li><Link to="/about" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base nav-button-hover">About Us</Link></li>
-                <li><Link to="/destinations" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base nav-button-hover">Destinations</Link></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base nav-button-hover">Tour Packages</a></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base nav-button-hover">Travel Tips</a></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base nav-button-hover">Gallery</a></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base nav-button-hover">Blog</a></li>
+                <li><Link to="/about" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">About Us</Link></li>
+                <li><Link to="/destinations" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Destinations</Link></li>
+                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Tour Packages</a></li>
+                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Travel Tips</a></li>
+                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Blog</a></li>
               </ul>
             </div>
             
@@ -383,19 +352,15 @@ const Index = () => {
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Contact Info</h3>
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-start space-x-3">
-                  <i className="fas fa-map-marker-alt text-terracotta-400 mt-1 text-sm sm:text-base"></i>
                   <span className="text-cream-200 text-sm sm:text-base">123 Adventure Street<br/>Explorer City, EC 12345</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="fas fa-phone text-terracotta-400 text-sm sm:text-base"></i>
                   <span className="text-cream-200 text-sm sm:text-base">+1 (555) 123-NOVA</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="fas fa-envelope text-terracotta-400 text-sm sm:text-base"></i>
                   <span className="text-cream-200 text-sm sm:text-base">info@novatrails.com</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <i className="fas fa-clock text-terracotta-400 mt-1 text-sm sm:text-base"></i>
                   <span className="text-cream-200 text-sm sm:text-base">Mon-Fri: 9AM-6PM<br/>Sat-Sun: 10AM-4PM</span>
                 </div>
               </div>
@@ -411,8 +376,8 @@ const Index = () => {
                   placeholder="Enter your email" 
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-sage-800 border border-sage-700 rounded-lg focus:outline-none focus:border-terracotta-500 transition-colors text-sm sm:text-base"
                 />
-                <Button className="w-full bg-gradient-to-r from-terracotta-500 to-sage-600 hover:from-terracotta-600 hover:to-sage-700 text-white px-4 sm:px-6 py-2 sm:py-3 transform hover:scale-105 transition-all duration-200 text-sm sm:text-base nav-button-hover">
-                  <i className="fas fa-paper-plane mr-2"></i>Subscribe
+                <Button className="w-full bg-gradient-to-r from-terracotta-500 to-sage-600 hover:from-terracotta-600 hover:to-sage-700 text-white px-4 sm:px-6 py-2 sm:py-3 transform hover:scale-105 transition-all duration-200 text-sm sm:text-base">
+                  Subscribe
                 </Button>
               </div>
               <div className="mt-4">
@@ -426,8 +391,8 @@ const Index = () => {
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-cream-200 text-xs sm:text-sm text-center md:text-left">
                 © 2025 Nova Trails. All rights reserved. | 
-                <a href="#" className="hover:text-terracotta-400 transition-colors nav-button-hover"> Privacy Policy</a> | 
-                <a href="#" className="hover:text-terracotta-400 transition-colors nav-button-hover"> Terms of Service</a>
+                <a href="#" className="hover:text-terracotta-400 transition-colors"> Privacy Policy</a> | 
+                <a href="#" className="hover:text-terracotta-400 transition-colors"> Terms of Service</a>
               </p>
             </div>
           </div>
