@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import { Cheetah, Lion, Monkey } from 'lucide-react';
+import { Rabbit, Fish, Bird } from 'lucide-react';
 import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 import HeroCarousel from '@/components/HeroCarousel';
@@ -47,8 +47,8 @@ const Index = () => {
     <div className="overflow-x-hidden">
       {/* Wildlife Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <Cheetah className="cheetah-animation w-16 h-16 text-sage-300" />
-        <Lion className="lion-animation w-20 h-20 text-terracotta-300" />
+        <Rabbit className="cheetah-animation w-16 h-16 text-sage-300" />
+        <Fish className="lion-animation w-20 h-20 text-terracotta-300" />
       </div>
 
       {/* Transparent Header that becomes visible on scroll */}
@@ -67,7 +67,7 @@ const Index = () => {
                   alt="Nova Trails Logo" 
                   className="w-8 h-8 sm:w-10 sm:h-10 relative z-10"
                 />
-                <Monkey className="monkey-animation w-6 h-6 text-terracotta-500 top-0 left-8" />
+                <Bird className="monkey-animation w-6 h-6 text-terracotta-500 top-0 left-8" />
               </div>
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </div>
@@ -338,8 +338,8 @@ const Index = () => {
       <footer id="contact" className="bg-sage-900 text-white py-12 sm:py-16 relative overflow-hidden">
         {/* Wildlife Background Elements */}
         <div className="absolute inset-0 pointer-events-none opacity-10">
-          <Cheetah className="absolute top-10 right-20 w-32 h-32 text-terracotta-300" />
-          <Lion className="absolute bottom-10 left-20 w-28 h-28 text-sage-300" />
+          <Rabbit className="absolute top-10 right-20 w-32 h-32 text-terracotta-300" />
+          <Fish className="absolute bottom-10 left-20 w-28 h-28 text-sage-300" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -353,7 +353,7 @@ const Index = () => {
                   className="w-8 h-8 sm:w-10 sm:h-10"
                 />
                 <span className="text-xl sm:text-2xl font-bold">Nova Trails</span>
-                <Monkey className="monkey-animation w-4 h-4 text-terracotta-400 top-0 left-20" />
+                <Bird className="monkey-animation w-4 h-4 text-terracotta-400 top-0 left-20" />
               </div>
               <p className="text-cream-200 mb-4 sm:mb-6 text-sm sm:text-base">Discover what's never been found. We create extraordinary adventures that connect you with the world's most incredible destinations.</p>
               <div className="flex space-x-4">
