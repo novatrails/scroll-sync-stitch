@@ -109,12 +109,6 @@ const HeroCarousel: React.FC = () => {
                       {slide.buttonText} →
                     </Button>
                   </Link>
-                  <Button 
-                    variant="outline" 
-                    className="border-2 border-white text-white hover:bg-white hover:text-sage-900 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transform transition-all duration-300 animate-fade-in nav-button-hover"
-                  >
-                    View Gallery
-                  </Button>
                 </div>
               </div>
             </div>
@@ -166,7 +160,7 @@ const HeroCarousel: React.FC = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <i className="fas fa-chevron-down text-xl sm:text-2xl"></i>
+        <div className="text-xl sm:text-2xl">↓</div>
       </div>
     </section>
   );

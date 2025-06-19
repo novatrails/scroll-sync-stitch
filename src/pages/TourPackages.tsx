@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 
-const Contact = () => {
+const TourPackages = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
@@ -13,8 +13,59 @@ const Contact = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const packages = [
+    {
+      title: "Classic Safari Adventure",
+      duration: "7 Days",
+      price: "From $2,500",
+      image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      highlights: ["Serengeti National Park", "Ngorongoro Crater", "Tarangire National Park", "Professional Guide"],
+      description: "Experience the best of Tanzania's northern circuit with this comprehensive safari package."
+    },
+    {
+      title: "Kilimanjaro Trek",
+      duration: "8 Days",
+      price: "From $3,200",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      highlights: ["Machame Route", "Professional Guides", "All Equipment", "Airport Transfers"],
+      description: "Conquer Africa's highest peak with our expertly guided Kilimanjaro expedition."
+    },
+    {
+      title: "Zanzibar Beach Escape",
+      duration: "5 Days",
+      price: "From $1,800",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      highlights: ["Stone Town Tour", "Spice Farm Visit", "Pristine Beaches", "Cultural Experiences"],
+      description: "Relax on pristine beaches and explore the rich culture of Zanzibar Island."
+    },
+    {
+      title: "Cultural Heritage Tour",
+      duration: "6 Days",
+      price: "From $2,100",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      highlights: ["Maasai Villages", "Local Markets", "Traditional Ceremonies", "Cultural Immersion"],
+      description: "Immerse yourself in Tanzania's rich cultural heritage and traditions."
+    },
+    {
+      title: "Ultimate Tanzania",
+      duration: "14 Days",
+      price: "From $5,500",
+      image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      highlights: ["Complete Safari Circuit", "Kilimanjaro Trek", "Zanzibar Relaxation", "All Inclusive"],
+      description: "The ultimate Tanzania experience combining safari, mountain trekking, and beach relaxation."
+    },
+    {
+      title: "Photography Safari",
+      duration: "10 Days",
+      price: "From $4,200",
+      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      highlights: ["Professional Photo Guide", "Prime Wildlife Locations", "Sunrise/Sunset Shoots", "Equipment Support"],
+      description: "Perfect for photography enthusiasts looking to capture Tanzania's stunning wildlife and landscapes."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-cream-50">
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +79,7 @@ const Contact = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-2">
               <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
               <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
               <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
@@ -60,7 +111,7 @@ const Contact = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="h-screen relative overflow-hidden">
+      <section className="h-96 relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -72,149 +123,63 @@ const Contact = () => {
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">
             <div className="text-terracotta-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
-              Get In Touch
+              Explore Our Packages
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Contact Us
+              Tour Packages
             </h1>
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
-              Ready to start your adventure? Get in touch with our travel experts and let us help plan your perfect journey.
+              Discover our carefully crafted tour packages designed to give you the best of Tanzania's natural beauty and cultural heritage.
             </p>
-            <Button 
-              onClick={() => setBookingModalOpen(true)}
-              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
-            >
-              Start Planning
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Contact Information */}
-      <section className="py-16 lg:py-20 bg-cream-50">
+      {/* Tour Packages Grid */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">How to Reach Us</h2>
-            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">We're here to help you plan the adventure of a lifetime</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Choose Your Adventure</h2>
+            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">From thrilling safaris to cultural immersions, we have the perfect package for every traveler</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                title: "Visit Our Office",
-                info: "Arusha, Tanzania",
-                detail: "Mon-Fri: 9AM-6PM, Sat-Sun: 10AM-4PM"
-              },
-              {
-                title: "Call Us",
-                info: "+1 (555) 123-NOVA",
-                detail: "Available 24/7 for emergencies"
-              },
-              {
-                title: "Email Us",
-                info: "info@novatrails.com",
-                detail: "Response within 24 hours"
-              }
-            ].map((contact, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-terracotta-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="w-8 h-8 bg-terracotta-500 rounded-full"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {packages.map((pkg, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div 
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${pkg.image}')` }}
+                />
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold text-sage-900">{pkg.title}</h3>
+                    <span className="text-terracotta-500 font-semibold text-sm bg-terracotta-50 px-2 py-1 rounded">{pkg.duration}</span>
+                  </div>
+                  <p className="text-sage-600 mb-4">{pkg.description}</p>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-sage-900 mb-2">Highlights:</h4>
+                    <ul className="text-sm text-sage-600 space-y-1">
+                      {pkg.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-center">
+                          <span className="w-2 h-2 bg-terracotta-400 rounded-full mr-2"></span>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-2xl font-bold text-sage-900">{pkg.price}</span>
+                    <Button 
+                      onClick={() => setBookingModalOpen(true)}
+                      className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-lg"
+                    >
+                      Book Now
+                    </Button>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-sage-900 mb-3">{contact.title}</h3>
-                <p className="text-sage-700 font-semibold mb-2">{contact.info}</p>
-                <p className="text-sage-600 text-sm">{contact.detail}</p>
               </div>
             ))}
           </div>
-
-          {/* Interactive Map */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-6 border-b border-sage-200">
-              <h3 className="text-2xl font-bold text-sage-900 mb-2">Our Location</h3>
-              <p className="text-sage-600">Find us in the heart of Tanzania's safari capital</p>
-            </div>
-            <div className="h-96">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127670.98946123156!2d36.68265!3d-3.3690235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183f4c2ffef98633%3A0x7b0e12e61c1bce4c!2sArusha%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Nova Trails Office Location - Arusha, Tanzania"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Send Us a Message</h2>
-            <p className="text-lg sm:text-xl text-sage-600">Let us know how we can help make your travel dreams come true</p>
-          </div>
-          
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-sage-900 mb-2">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                  placeholder="Your first name"
-                />
-              </div>
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-sage-900 mb-2">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                  placeholder="Your last name"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-sage-900 mb-2">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                placeholder="your.email@example.com"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-sage-900 mb-2">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                placeholder="What's this about?"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-sage-900 mb-2">Message</label>
-              <textarea
-                id="message"
-                rows={6}
-                className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                placeholder="Tell us about your dream adventure..."
-              ></textarea>
-            </div>
-            
-            <div className="text-center">
-              <Button className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-3 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
-                Send Message
-              </Button>
-            </div>
-          </form>
         </div>
       </section>
 
@@ -284,4 +249,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default TourPackages;

@@ -64,7 +64,7 @@ const Index = () => {
             </div>
             
             {/* Desktop Menu - Improved Layout */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-2">
               <button onClick={handleHomeClick} className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</button>
               <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
               <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
@@ -327,11 +327,18 @@ const Index = () => {
               </div>
               <p className="text-cream-200 mb-4 sm:mb-6 text-sm sm:text-base">Discover what's never been found. We create extraordinary adventures that connect you with the world's most incredible destinations.</p>
               <div className="flex space-x-4">
-                {['Facebook', 'Instagram', 'Twitter', 'YouTube'].map((social) => (
-                  <a key={social} href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                    <span className="text-xs">{social[0]}</span>
-                  </a>
-                ))}
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <span className="text-xs">f</span>
+                </a>
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <span className="text-xs">i</span>
+                </a>
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <span className="text-xs">t</span>
+                </a>
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <span className="text-xs">Y</span>
+                </a>
               </div>
             </div>
             
@@ -341,9 +348,9 @@ const Index = () => {
               <ul className="space-y-2 sm:space-y-3">
                 <li><Link to="/about" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">About Us</Link></li>
                 <li><Link to="/destinations" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Destinations</Link></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Tour Packages</a></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Travel Tips</a></li>
-                <li><a href="#" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Blog</a></li>
+                <li><Link to="/tour-packages" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Tour Packages</Link></li>
+                <li><Link to="/travel-tips" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Travel Tips</Link></li>
+                <li><Link to="/blog" className="text-cream-200 hover:text-terracotta-400 transition-colors text-sm sm:text-base">Blog</Link></li>
               </ul>
             </div>
             

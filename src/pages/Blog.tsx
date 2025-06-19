@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 
-const Contact = () => {
+const Blog = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
@@ -13,8 +13,72 @@ const Contact = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const blogPosts = [
+    {
+      title: "The Great Migration: Nature's Greatest Spectacle",
+      excerpt: "Witness millions of wildebeest and zebras crossing the Serengeti in one of nature's most incredible displays.",
+      date: "January 15, 2025",
+      author: "Sarah Johnson",
+      category: "Wildlife",
+      image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      readTime: "5 min read"
+    },
+    {
+      title: "Conquering Kilimanjaro: A Journey to the Roof of Africa",
+      excerpt: "Personal account of the challenging but rewarding trek to Africa's highest peak.",
+      date: "January 12, 2025",
+      author: "Mike Chen",
+      category: "Adventure",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      readTime: "8 min read"
+    },
+    {
+      title: "Zanzibar's Hidden Gems: Beyond the Beaches",
+      excerpt: "Discover the cultural treasures and hidden spots that make Zanzibar truly special.",
+      date: "January 10, 2025",
+      author: "Emma Rodriguez",
+      category: "Culture",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      readTime: "6 min read"
+    },
+    {
+      title: "Photography Tips for Your Safari Adventure",
+      excerpt: "Professional photographer shares secrets for capturing the perfect wildlife shots.",
+      date: "January 8, 2025",
+      author: "David Thompson",
+      category: "Photography",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      readTime: "7 min read"
+    },
+    {
+      title: "Sustainable Tourism in Tanzania",
+      excerpt: "How responsible travel helps preserve Tanzania's natural wonders for future generations.",
+      date: "January 5, 2025",
+      author: "Dr. Grace Mwangi",
+      category: "Conservation",
+      image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      readTime: "4 min read"
+    },
+    {
+      title: "Local Cuisine: A Taste of Tanzania",
+      excerpt: "Explore the flavors and traditions of Tanzanian cuisine from coast to highlands.",
+      date: "January 3, 2025",
+      author: "Chef Amani Juma",
+      category: "Food",
+      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      readTime: "5 min read"
+    }
+  ];
+
+  const categories = ["All", "Wildlife", "Adventure", "Culture", "Photography", "Conservation", "Food"];
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredPosts = selectedCategory === "All" 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-cream-50">
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +92,7 @@ const Contact = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-2">
               <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
               <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
               <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
@@ -60,7 +124,7 @@ const Contact = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="h-screen relative overflow-hidden">
+      <section className="h-96 relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -72,149 +136,86 @@ const Contact = () => {
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">
             <div className="text-terracotta-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
-              Get In Touch
+              Stories & Insights
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Contact Us
+              Travel Blog
             </h1>
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
-              Ready to start your adventure? Get in touch with our travel experts and let us help plan your perfect journey.
+              Discover inspiring stories, expert tips, and insider knowledge from our adventures across Tanzania.
             </p>
-            <Button 
-              onClick={() => setBookingModalOpen(true)}
-              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
-            >
-              Start Planning
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Contact Information */}
-      <section className="py-16 lg:py-20 bg-cream-50">
+      {/* Category Filter */}
+      <section className="py-8 bg-white border-b border-sage-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">How to Reach Us</h2>
-            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">We're here to help you plan the adventure of a lifetime</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                title: "Visit Our Office",
-                info: "Arusha, Tanzania",
-                detail: "Mon-Fri: 9AM-6PM, Sat-Sun: 10AM-4PM"
-              },
-              {
-                title: "Call Us",
-                info: "+1 (555) 123-NOVA",
-                detail: "Available 24/7 for emergencies"
-              },
-              {
-                title: "Email Us",
-                info: "info@novatrails.com",
-                detail: "Response within 24 hours"
-              }
-            ].map((contact, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-terracotta-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="w-8 h-8 bg-terracotta-500 rounded-full"></div>
-                </div>
-                <h3 className="text-xl font-bold text-sage-900 mb-3">{contact.title}</h3>
-                <p className="text-sage-700 font-semibold mb-2">{contact.info}</p>
-                <p className="text-sage-600 text-sm">{contact.detail}</p>
-              </div>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                  selectedCategory === category
+                    ? 'bg-terracotta-500 text-white'
+                    : 'bg-sage-100 text-sage-700 hover:bg-sage-200'
+                }`}
+              >
+                {category}
+              </button>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Interactive Map */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-6 border-b border-sage-200">
-              <h3 className="text-2xl font-bold text-sage-900 mb-2">Our Location</h3>
-              <p className="text-sage-600">Find us in the heart of Tanzania's safari capital</p>
-            </div>
-            <div className="h-96">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127670.98946123156!2d36.68265!3d-3.3690235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183f4c2ffef98633%3A0x7b0e12e61c1bce4c!2sArusha%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Nova Trails Office Location - Arusha, Tanzania"
-              ></iframe>
-            </div>
+      {/* Blog Posts Grid */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map((post, index) => (
+              <article key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div 
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${post.image}')` }}
+                />
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="bg-terracotta-100 text-terracotta-700 px-3 py-1 rounded-full text-sm font-medium">
+                      {post.category}
+                    </span>
+                    <span className="text-sage-500 text-sm">{post.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-sage-900 mb-3 hover:text-terracotta-600 transition-colors cursor-pointer">
+                    {post.title}
+                  </h3>
+                  <p className="text-sage-600 mb-4 leading-relaxed">{post.excerpt}</p>
+                  <div className="flex items-center justify-between text-sm text-sage-500">
+                    <span>By {post.author}</span>
+                    <span>{post.date}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Send Us a Message</h2>
-            <p className="text-lg sm:text-xl text-sage-600">Let us know how we can help make your travel dreams come true</p>
+      {/* Newsletter Signup */}
+      <section className="py-16 bg-gradient-to-r from-sage-600 to-terracotta-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Stay Updated</h2>
+          <p className="text-lg text-cream-100 mb-8">Subscribe to our blog for the latest travel stories and tips.</p>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cream-300"
+            />
+            <Button className="bg-white text-sage-600 hover:bg-cream-100 px-6 py-3 font-semibold">
+              Subscribe
+            </Button>
           </div>
-          
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-sage-900 mb-2">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                  placeholder="Your first name"
-                />
-              </div>
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-sage-900 mb-2">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                  placeholder="Your last name"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-sage-900 mb-2">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                placeholder="your.email@example.com"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-sage-900 mb-2">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                placeholder="What's this about?"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-sage-900 mb-2">Message</label>
-              <textarea
-                id="message"
-                rows={6}
-                className="w-full px-4 py-3 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-transparent"
-                placeholder="Tell us about your dream adventure..."
-              ></textarea>
-            </div>
-            
-            <div className="text-center">
-              <Button className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-3 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
-                Send Message
-              </Button>
-            </div>
-          </form>
         </div>
       </section>
 
@@ -284,4 +285,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Blog;
