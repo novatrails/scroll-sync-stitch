@@ -28,14 +28,15 @@ const MobileNav = ({ isOpen, onToggle, onBookingOpen }: MobileNavProps) => {
     <div className={`md:hidden fixed inset-0 z-40 transform transition-transform duration-300 ${
       isOpen ? 'translate-x-0' : 'translate-x-full'
     }`}>
-      <div className="bg-sage-900/95 backdrop-blur-lg h-full w-full pt-20">
+      <div className="bg-sage-900 backdrop-blur-lg h-full w-full pt-20">
         <div className="flex flex-col space-y-6 px-6">
-          <button 
-            onClick={handleHomeClick}
+          <Link 
+            to="/" 
+            onClick={handleLinkClick}
             className="text-white hover:text-cream-300 transition-colors duration-200 text-lg text-left py-3 border-b border-sage-700"
           >
             Home
-          </button>
+          </Link>
           <Link 
             to="/destinations" 
             onClick={handleLinkClick}

@@ -102,7 +102,7 @@ const Contact = () => {
             {[
               {
                 title: "Visit Our Office",
-                info: "123 Adventure Street, Explorer City, EC 12345",
+                info: "Arusha, Tanzania",
                 detail: "Mon-Fri: 9AM-6PM, Sat-Sun: 10AM-4PM"
               },
               {
@@ -131,18 +131,18 @@ const Contact = () => {
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="p-6 border-b border-sage-200">
               <h3 className="text-2xl font-bold text-sage-900 mb-2">Our Location</h3>
-              <p className="text-sage-600">Find us at the heart of the adventure district</p>
+              <p className="text-sage-600">Find us in the heart of Tanzania's safari capital</p>
             </div>
             <div className="h-96">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.279915371!2d-74.25987368715491!3d40.697149394327415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127670.98946123156!2d36.68265!3d-3.3690235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183f4c2ffef98633%3A0x7b0e12e61c1bce4c!2sArusha%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Nova Trails Office Location"
+                title="Nova Trails Office Location - Arusha, Tanzania"
               ></iframe>
             </div>
           </div>
