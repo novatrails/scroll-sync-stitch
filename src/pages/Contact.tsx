@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -22,14 +23,18 @@ const Contact = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="flex items-center space-x-2 lg:space-x-4">
-              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Home</Link>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Contact</Link>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-4">
+                <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200">Home</Link>
+                <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200">Destinations</Link>
+              </div>
+              <div className="flex items-center space-x-4">
+                <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200">About</Link>
+                <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200">Contact</Link>
+              </div>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-3 lg:px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-2 lg:ml-4 text-sm lg:text-base"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
               >
                 Book Now
               </Button>
@@ -82,7 +87,7 @@ const Contact = () => {
               {
                 title: "Visit Our Office",
                 info: "Arusha, Tanzania",
-                detail: "Mon-Fri: 06:30 AM - 18:30, Sat-Sun: 06:30 AM - 14:00"
+                detail: "Monday – Friday: 06:30 – 18:30, Saturday – Sunday: 06:30 – 14:00"
               },
               {
                 title: "Call Us",
@@ -237,28 +242,34 @@ const Contact = () => {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <div className="space-y-2 text-sm text-cream-400">
-                <p>Arusha, Tanzania</p>
-                <p>+255 744 667 778</p>
-                <p>novatrails01@outlook.com</p>
-                <p>Mon-Fri: 06:30 AM - 18:30<br/>Sat-Sun: 06:30 AM - 14:00</p>
+              <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
+              <div className="space-y-3 text-sm text-cream-400">
+                <div>
+                  <p className="font-medium text-white">Location:</p>
+                  <p>Arusha, Tanzania</p>
+                </div>
+                <div>
+                  <p className="font-medium text-white">Phone:</p>
+                  <p>+255 744 667 778</p>
+                </div>
+                <div>
+                  <p className="font-medium text-white">Email:</p>
+                  <p>novatrails01@outlook.com</p>
+                </div>
+                <div>
+                  <p className="font-medium text-white">Business Hours:</p>
+                  <p>Monday – Friday: 06:30 – 18:30</p>
+                  <p>Saturday – Sunday: 06:30 – 14:00</p>
+                </div>
               </div>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <Facebook size={16} />
-                </a>
-                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <Instagram size={16} />
-                </a>
-                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <Twitter size={16} />
-                </a>
-              </div>
+              <h3 className="text-lg font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li><Link to="/privacy-policy" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">Terms of Service</Link></li>
+              </ul>
             </div>
           </div>
           

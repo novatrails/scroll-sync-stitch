@@ -13,6 +13,8 @@ import Zanzibar from "./pages/Zanzibar"
 import TourPackages from "./pages/TourPackages"
 import TravelTips from "./pages/TravelTips"
 import Blog from "./pages/Blog"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import TermsOfService from "./pages/TermsOfService"
 import NotFound from "./pages/NotFound"
 
 const queryClient = new QueryClient()
@@ -34,6 +36,8 @@ function App() {
             <Route path="/tour-packages" element={<TourPackages />} />
             <Route path="/travel-tips" element={<TravelTips />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

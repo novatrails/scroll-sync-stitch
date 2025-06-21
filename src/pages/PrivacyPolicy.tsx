@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import BookingModal from '@/components/BookingModal';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
-const TravelTips = () => {
+const PrivacyPolicy = () => {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
   return (
@@ -44,70 +44,47 @@ const TravelTips = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="h-screen relative overflow-hidden">
+      <section className="h-64 relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-black/60" />
         
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">
-            <div className="text-terracotta-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
-              Plan Your Trip
-            </div>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Travel Tips
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Privacy Policy
             </h1>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
-              Essential advice and insights to ensure a smooth and unforgettable journey.
-            </p>
-            <Button 
-              onClick={() => setBookingModalOpen(true)}
-              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
-            >
-              Start Planning
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Travel Tips Content */}
+      {/* Privacy Policy Content */}
       <section className="py-16 lg:py-20 bg-cream-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Essential Travel Tips</h2>
-            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">
-              Prepare for your adventure with our expert travel advice.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Packing Essentials",
-                description: "Pack light but smart. Include versatile clothing, comfortable shoes, and necessary travel documents.",
-                image: "https://images.unsplash.com/photo-1490576944379-ff23ca63a1ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              },
-              {
-                title: "Health and Safety",
-                description: "Consult your doctor for necessary vaccinations and health precautions. Ensure you have travel insurance.",
-                image: "https://images.unsplash.com/photo-1532980400857-414ca3674e07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              },
-              {
-                title: "Local Customs",
-                description: "Respect local traditions and customs. Learn a few basic phrases in the local language.",
-                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              }
-            ].map((tip, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                <div className="h-56 bg-cover bg-center rounded-2xl mb-4" style={{ backgroundImage: `url('${tip.image}')` }}></div>
-                <h3 className="text-xl font-bold text-sage-900 mb-3">{tip.title}</h3>
-                <p className="text-sage-700">{tip.description}</p>
-              </div>
-            ))}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-sage-900 mb-6">Privacy Policy</h2>
+            <div className="prose prose-lg text-sage-700 space-y-6">
+              <p><strong>Last Updated:</strong> January 2025</p>
+              
+              <h3 className="text-xl font-semibold text-sage-900 mt-8 mb-4">Information We Collect</h3>
+              <p>We collect information you provide directly to us, such as when you book a tour, contact us, or subscribe to our newsletter. This may include your name, email address, phone number, and travel preferences.</p>
+              
+              <h3 className="text-xl font-semibold text-sage-900 mt-8 mb-4">How We Use Your Information</h3>
+              <p>We use the information we collect to provide, maintain, and improve our services, process bookings, communicate with you, and send you updates about our tours and services.</p>
+              
+              <h3 className="text-xl font-semibold text-sage-900 mt-8 mb-4">Information Sharing</h3>
+              <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy or as required by law.</p>
+              
+              <h3 className="text-xl font-semibold text-sage-900 mt-8 mb-4">Data Security</h3>
+              <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+              
+              <h3 className="text-xl font-semibold text-sage-900 mt-8 mb-4">Contact Us</h3>
+              <p>If you have any questions about this Privacy Policy, please contact us at novatrails01@outlook.com or call +255 744 667 778.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -197,4 +174,4 @@ const TravelTips = () => {
   );
 };
 
-export default TravelTips;
+export default PrivacyPolicy;
