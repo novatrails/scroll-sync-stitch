@@ -1,33 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
+import BookingModal from '@/components/BookingModal';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 const Kilimanjaro = () => {
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
-                alt="Nova Trails Logo" 
-                className="w-8 h-8 sm:w-10 sm:h-10"
-              />
-              <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
-            </Link>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation onBookingOpen={() => setBookingModalOpen(true)} />
 
       {/* Hero Section */}
       <section className="h-screen relative overflow-hidden">
@@ -50,7 +33,10 @@ const Kilimanjaro = () => {
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
               Conquer Africa's highest peak and experience the ultimate adventure. From tropical rainforest to arctic summit, witness nature's incredible diversity.
             </p>
-            <Button className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in">
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
+            >
               Plan Your Climb
             </Button>
           </div>
@@ -126,7 +112,10 @@ const Kilimanjaro = () => {
             Join thousands who have reached the summit with our expert guides and proven success rates.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-sage-600 hover:bg-cream-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-white text-sage-600 hover:bg-cream-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+            >
               Book Kilimanjaro Trek
             </Button>
             <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-sage-600 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-300">
@@ -136,56 +125,12 @@ const Kilimanjaro = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-sage-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <img 
-                  src="/lovable-uploads/1e7b8c1b-e6f6-42c3-b3fe-feb49e40d03d.png" 
-                  alt="Nova Trails Logo" 
-                  className="w-8 h-8"
-                />
-                <span className="text-xl font-bold">Nova Trails</span>
-              </div>
-              <p className="text-cream-400 text-sm">Your gateway to extraordinary Tanzanian adventures.</p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><Link to="/" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">Home</Link></li>
-                <li><Link to="/destinations" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">Destinations</Link></li>
-                <li><Link to="/about" className="text-cream-400 hover:text-terracotta-400 transition-colors text-sm">About</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <div className="space-y-2 text-sm text-cream-400">
-                <p>+1 (555) 123-NOVA</p>
-                <p>info@novatrails.com</p>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                {['Facebook', 'Instagram', 'Twitter'].map((social) => (
-                  <a key={social} href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                    <span className="text-xs">{social[0]}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-sage-800 mt-8 pt-6">
-            <p className="text-center text-cream-400 text-sm">© 2025 Nova Trails. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+
+      <BookingModal 
+        isOpen={bookingModalOpen} 
+        onClose={() => setBookingModalOpen(false)} 
+      />
     </div>
   );
 };
