@@ -1,17 +1,11 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Contact = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -28,35 +22,20 @@ const Contact = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
+            <div className="flex items-center space-x-2 lg:space-x-4">
+              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Home</Link>
+              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">About</Link>
+              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-3 lg:px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-2 lg:ml-4 text-sm lg:text-base"
               >
                 Book Now
               </Button>
             </div>
-            
-            <button 
-              className="md:hidden text-white z-50 relative"
-              onClick={toggleMobileMenu}
-            >
-              <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
-                {mobileMenuOpen ? '✕' : '☰'}
-              </div>
-            </button>
           </div>
         </div>
-        
-        <MobileNav 
-          isOpen={mobileMenuOpen} 
-          onToggle={toggleMobileMenu} 
-          onBookingOpen={() => setBookingModalOpen(true)}
-        />
       </nav>
 
       {/* Hero Section */}
@@ -103,16 +82,16 @@ const Contact = () => {
               {
                 title: "Visit Our Office",
                 info: "Arusha, Tanzania",
-                detail: "Mon-Fri: 9AM-6PM, Sat-Sun: 10AM-4PM"
+                detail: "Mon-Fri: 06:30 AM - 18:30, Sat-Sun: 06:30 AM - 14:00"
               },
               {
                 title: "Call Us",
-                info: "+1 (555) 123-NOVA",
+                info: "+255 744 667 778",
                 detail: "Available 24/7 for emergencies"
               },
               {
                 title: "Email Us",
-                info: "info@novatrails.com",
+                info: "novatrails01@outlook.com",
                 detail: "Response within 24 hours"
               }
             ].map((contact, index) => (
@@ -232,6 +211,17 @@ const Contact = () => {
                 <span className="text-xl font-bold">Nova Trails</span>
               </div>
               <p className="text-cream-400 text-sm">Your gateway to extraordinary Tanzanian adventures.</p>
+              <div className="flex space-x-4 mt-4">
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Facebook size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Instagram size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Twitter size={16} />
+                </a>
+              </div>
             </div>
             
             <div>
@@ -249,8 +239,10 @@ const Contact = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <div className="space-y-2 text-sm text-cream-400">
-                <p>+1 (555) 123-NOVA</p>
-                <p>info@novatrails.com</p>
+                <p>Arusha, Tanzania</p>
+                <p>+255 744 667 778</p>
+                <p>novatrails01@outlook.com</p>
+                <p>Mon-Fri: 06:30 AM - 18:30<br/>Sat-Sun: 06:30 AM - 14:00</p>
               </div>
             </div>
             
@@ -258,13 +250,13 @@ const Contact = () => {
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">f</span>
+                  <Facebook size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">i</span>
+                  <Instagram size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">t</span>
+                  <Twitter size={16} />
                 </a>
               </div>
             </div>

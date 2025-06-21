@@ -1,84 +1,14 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Blog = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const blogPosts = [
-    {
-      title: "The Great Migration: Nature's Greatest Spectacle",
-      excerpt: "Witness millions of wildebeest and zebras crossing the Serengeti in one of nature's most incredible displays.",
-      date: "January 15, 2025",
-      author: "Sarah Johnson",
-      category: "Wildlife",
-      image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      readTime: "5 min read"
-    },
-    {
-      title: "Conquering Kilimanjaro: A Journey to the Roof of Africa",
-      excerpt: "Personal account of the challenging but rewarding trek to Africa's highest peak.",
-      date: "January 12, 2025",
-      author: "Mike Chen",
-      category: "Adventure",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      readTime: "8 min read"
-    },
-    {
-      title: "Zanzibar's Hidden Gems: Beyond the Beaches",
-      excerpt: "Discover the cultural treasures and hidden spots that make Zanzibar truly special.",
-      date: "January 10, 2025",
-      author: "Emma Rodriguez",
-      category: "Culture",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      readTime: "6 min read"
-    },
-    {
-      title: "Photography Tips for Your Safari Adventure",
-      excerpt: "Professional photographer shares secrets for capturing the perfect wildlife shots.",
-      date: "January 8, 2025",
-      author: "David Thompson",
-      category: "Photography",
-      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      readTime: "7 min read"
-    },
-    {
-      title: "Sustainable Tourism in Tanzania",
-      excerpt: "How responsible travel helps preserve Tanzania's natural wonders for future generations.",
-      date: "January 5, 2025",
-      author: "Dr. Grace Mwangi",
-      category: "Conservation",
-      image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      readTime: "4 min read"
-    },
-    {
-      title: "Local Cuisine: A Taste of Tanzania",
-      excerpt: "Explore the flavors and traditions of Tanzanian cuisine from coast to highlands.",
-      date: "January 3, 2025",
-      author: "Chef Amani Juma",
-      category: "Food",
-      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      readTime: "5 min read"
-    }
-  ];
-
-  const categories = ["All", "Wildlife", "Adventure", "Culture", "Photography", "Conservation", "Food"];
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const filteredPosts = selectedCategory === "All" 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
-
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,39 +22,24 @@ const Blog = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="hidden md:flex items-center space-x-2">
-              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
+            <div className="flex items-center space-x-2 lg:space-x-4">
+              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Home</Link>
+              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">About</Link>
+              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-3 lg:px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-2 lg:ml-4 text-sm lg:text-base"
               >
                 Book Now
               </Button>
             </div>
-            
-            <button 
-              className="md:hidden text-white z-50 relative"
-              onClick={toggleMobileMenu}
-            >
-              <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
-                {mobileMenuOpen ? '✕' : '☰'}
-              </div>
-            </button>
           </div>
         </div>
-        
-        <MobileNav 
-          isOpen={mobileMenuOpen} 
-          onToggle={toggleMobileMenu} 
-          onBookingOpen={() => setBookingModalOpen(true)}
-        />
       </nav>
 
       {/* Hero Section */}
-      <section className="h-96 relative overflow-hidden">
+      <section className="h-screen relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -136,85 +51,77 @@ const Blog = () => {
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">
             <div className="text-terracotta-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
-              Stories & Insights
+              Explore Our Stories
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Travel Blog
+              The Nova Trails Blog
             </h1>
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
-              Discover inspiring stories, expert tips, and insider knowledge from our adventures across Tanzania.
+              Dive into our journal of adventures, travel tips, and insider stories from the heart of Tanzania.
             </p>
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
+            >
+              Start Planning
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="py-8 bg-white border-b border-sage-200">
+      {/* Blog Content */}
+      <section className="py-16 lg:py-20 bg-cream-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-                  selectedCategory === category
-                    ? 'bg-terracotta-500 text-white'
-                    : 'bg-sage-100 text-sage-700 hover:bg-sage-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Latest Articles</h2>
+            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">Stay up-to-date with the latest news, travel tips, and stories from our adventures</p>
           </div>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid */}
-      <section className="py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
-              <article key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                title: "The Ultimate Guide to Safari Photography",
+                author: "Sarah Johnson",
+                date: "January 5, 2025",
+                image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: "Capture the magic of the Serengeti with our expert tips on wildlife photography"
+              },
+              {
+                title: "Climbing Kilimanjaro: A Personal Journey",
+                author: "Mike Chen",
+                date: "December 28, 2024",
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: "Follow Mike's inspiring ascent to the summit of Africa's highest peak"
+              },
+              {
+                title: "Zanzibar's Hidden Beaches: A Local's Perspective",
+                author: "Emma Rodriguez",
+                date: "December 15, 2024",
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: "Discover the untouched beauty of Zanzibar's coastline with Emma's guide"
+              }
+            ].map((article, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg hover:transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
                 <div 
-                  className="h-48 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${post.image}')` }}
+                  className="h-64 bg-cover bg-center rounded-t-2xl"
+                  style={{ backgroundImage: `url('${article.image}')` }}
                 />
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="bg-terracotta-100 text-terracotta-700 px-3 py-1 rounded-full text-sm font-medium">
-                      {post.category}
-                    </span>
-                    <span className="text-sage-500 text-sm">{post.readTime}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-sage-900 mb-3 hover:text-terracotta-600 transition-colors cursor-pointer">
-                    {post.title}
-                  </h3>
-                  <p className="text-sage-600 mb-4 leading-relaxed">{post.excerpt}</p>
-                  <div className="flex items-center justify-between text-sm text-sage-500">
-                    <span>By {post.author}</span>
-                    <span>{post.date}</span>
+                  <h3 className="text-xl font-bold text-sage-900 mb-2">{article.title}</h3>
+                  <p className="text-sage-600 text-sm mb-4">{article.content}</p>
+                  <div className="flex justify-between items-center">
+                    <div className="text-sage-700 text-xs">
+                      By {article.author}
+                      <br />
+                      {article.date}
+                    </div>
+                    <Button className="bg-terracotta-500 hover:bg-terracotta-600 text-white px-4 py-2 rounded-full text-sm">
+                      Read More
+                    </Button>
                   </div>
                 </div>
-              </article>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-16 bg-gradient-to-r from-sage-600 to-terracotta-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Stay Updated</h2>
-          <p className="text-lg text-cream-100 mb-8">Subscribe to our blog for the latest travel stories and tips.</p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cream-300"
-            />
-            <Button className="bg-white text-sage-600 hover:bg-cream-100 px-6 py-3 font-semibold">
-              Subscribe
-            </Button>
           </div>
         </div>
       </section>
@@ -233,6 +140,17 @@ const Blog = () => {
                 <span className="text-xl font-bold">Nova Trails</span>
               </div>
               <p className="text-cream-400 text-sm">Your gateway to extraordinary Tanzanian adventures.</p>
+              <div className="flex space-x-4 mt-4">
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Facebook size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Instagram size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Twitter size={16} />
+                </a>
+              </div>
             </div>
             
             <div>
@@ -250,8 +168,10 @@ const Blog = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <div className="space-y-2 text-sm text-cream-400">
-                <p>+1 (555) 123-NOVA</p>
-                <p>info@novatrails.com</p>
+                <p>Arusha, Tanzania</p>
+                <p>+255 744 667 778</p>
+                <p>novatrails01@outlook.com</p>
+                <p>Mon-Fri: 06:30 AM - 18:30<br/>Sat-Sun: 06:30 AM - 14:00</p>
               </div>
             </div>
             
@@ -259,13 +179,13 @@ const Blog = () => {
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">f</span>
+                  <Facebook size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">i</span>
+                  <Instagram size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">t</span>
+                  <Twitter size={16} />
                 </a>
               </div>
             </div>

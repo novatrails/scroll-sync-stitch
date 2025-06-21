@@ -1,59 +1,14 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const TravelTips = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const tips = [
-    {
-      category: "Health & Safety",
-      title: "Essential Vaccinations",
-      content: "Ensure you're up to date with routine vaccines and consider Yellow Fever, Hepatitis A/B, and Malaria prophylaxis.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      category: "Packing",
-      title: "What to Pack for Safari",
-      content: "Neutral-colored clothing, comfortable walking shoes, hat, sunscreen, and binoculars are essential items.",
-      image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      category: "Culture",
-      title: "Local Customs",
-      content: "Learn basic Swahili greetings, dress modestly, and always ask before photographing people.",
-      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      category: "Best Time",
-      title: "When to Visit",
-      content: "Dry season (June-October) is ideal for wildlife viewing, while wet season offers lush landscapes and fewer crowds.",
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      category: "Photography",
-      title: "Wildlife Photography Tips",
-      content: "Use a telephoto lens, respect animal space, shoot during golden hours, and always have spare batteries.",
-      image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      category: "Money",
-      title: "Currency & Payments",
-      content: "Tanzanian Shilling is the local currency. US Dollars are widely accepted. Credit cards work in major areas.",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-sage-900/95 backdrop-blur-lg border-b border-sage-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,43 +22,28 @@ const TravelTips = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </Link>
             
-            <div className="hidden md:flex items-center space-x-2">
-              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</Link>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
+            <div className="flex items-center space-x-2 lg:space-x-4">
+              <Link to="/" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Home</Link>
+              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">About</Link>
+              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-3 lg:px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-2 lg:ml-4 text-sm lg:text-base"
               >
                 Book Now
               </Button>
             </div>
-            
-            <button 
-              className="md:hidden text-white z-50 relative"
-              onClick={toggleMobileMenu}
-            >
-              <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
-                {mobileMenuOpen ? '✕' : '☰'}
-              </div>
-            </button>
           </div>
         </div>
-        
-        <MobileNav 
-          isOpen={mobileMenuOpen} 
-          onToggle={toggleMobileMenu} 
-          onBookingOpen={() => setBookingModalOpen(true)}
-        />
       </nav>
 
       {/* Hero Section */}
-      <section className="h-96 relative overflow-hidden">
+      <section className="h-screen relative overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2560&q=100')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
@@ -111,59 +51,59 @@ const TravelTips = () => {
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="max-w-3xl">
             <div className="text-terracotta-400 text-sm sm:text-base tracking-widest uppercase mb-4 animate-fade-in">
-              Expert Advice
+              Plan Your Trip
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ fontFamily: 'Playfair Display, serif' }}>
               Travel Tips
             </h1>
             <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed animate-fade-in">
-              Essential tips and advice to help you make the most of your Tanzanian adventure.
+              Essential advice and insights to ensure a smooth and unforgettable journey.
             </p>
+            <Button 
+              onClick={() => setBookingModalOpen(true)}
+              className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-8 py-4 text-lg rounded-lg transform hover:scale-105 transition-all duration-300 animate-fade-in"
+            >
+              Start Planning
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Travel Tips Grid */}
-      <section className="py-16 lg:py-20">
+      {/* Travel Tips Content */}
+      <section className="py-16 lg:py-20 bg-cream-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sage-900 mb-4">Essential Travel Tips</h2>
-            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">Everything you need to know for a safe and memorable journey</p>
+            <p className="text-lg sm:text-xl text-sage-600 max-w-3xl mx-auto">
+              Prepare for your adventure with our expert travel advice.
+            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tips.map((tip, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div 
-                  className="h-48 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${tip.image}')` }}
-                />
-                <div className="p-6">
-                  <div className="flex items-center mb-3">
-                    <span className="bg-terracotta-100 text-terracotta-700 px-3 py-1 rounded-full text-sm font-medium">
-                      {tip.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-sage-900 mb-3">{tip.title}</h3>
-                  <p className="text-sage-600 leading-relaxed">{tip.content}</p>
-                </div>
+            {[
+              {
+                title: "Packing Essentials",
+                description: "Pack light but smart. Include versatile clothing, comfortable shoes, and necessary travel documents.",
+                image: "https://images.unsplash.com/photo-1490576944379-ff23ca63a1ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              },
+              {
+                title: "Health and Safety",
+                description: "Consult your doctor for necessary vaccinations and health precautions. Ensure you have travel insurance.",
+                image: "https://images.unsplash.com/photo-1532980400857-414ca3674e07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              },
+              {
+                title: "Local Customs",
+                description: "Respect local traditions and customs. Learn a few basic phrases in the local language.",
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              }
+            ].map((tip, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                <div className="h-56 bg-cover bg-center rounded-2xl mb-4" style={{ backgroundImage: `url('${tip.image}')` }}></div>
+                <h3 className="text-xl font-bold text-sage-900 mb-3">{tip.title}</h3>
+                <p className="text-sage-700">{tip.description}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-sage-600 to-terracotta-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Ready to Plan Your Adventure?</h2>
-          <p className="text-lg text-cream-100 mb-8">Our travel experts are here to help you every step of the way.</p>
-          <Button 
-            onClick={() => setBookingModalOpen(true)}
-            className="bg-white text-sage-600 hover:bg-cream-100 px-8 py-3 text-lg font-semibold transform hover:scale-105 transition-all duration-300"
-          >
-            Get Expert Advice
-          </Button>
         </div>
       </section>
 
@@ -181,6 +121,17 @@ const TravelTips = () => {
                 <span className="text-xl font-bold">Nova Trails</span>
               </div>
               <p className="text-cream-400 text-sm">Your gateway to extraordinary Tanzanian adventures.</p>
+              <div className="flex space-x-4 mt-4">
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Facebook size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Instagram size={16} />
+                </a>
+                <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
+                  <Twitter size={16} />
+                </a>
+              </div>
             </div>
             
             <div>
@@ -198,8 +149,10 @@ const TravelTips = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <div className="space-y-2 text-sm text-cream-400">
-                <p>+1 (555) 123-NOVA</p>
-                <p>info@novatrails.com</p>
+                <p>Arusha, Tanzania</p>
+                <p>+255 744 667 778</p>
+                <p>novatrails01@outlook.com</p>
+                <p>Mon-Fri: 06:30 AM - 18:30<br/>Sat-Sun: 06:30 AM - 14:00</p>
               </div>
             </div>
             
@@ -207,13 +160,13 @@ const TravelTips = () => {
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">f</span>
+                  <Facebook size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">i</span>
+                  <Instagram size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">t</span>
+                  <Twitter size={16} />
                 </a>
               </div>
             </div>

@@ -1,15 +1,13 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import MobileNav from '@/components/MobileNav';
 import BookingModal from '@/components/BookingModal';
 import HeroCarousel from '@/components/HeroCarousel';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Index = () => {
   const [headerVisible, setHeaderVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const totalTestimonials = 3;
 
@@ -30,10 +28,6 @@ const Index = () => {
 
     return () => clearInterval(testimonialInterval);
   }, []);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
 
   const goToTestimonial = (index: number) => {
     setCurrentTestimonial(index);
@@ -63,37 +57,21 @@ const Index = () => {
               <span className="text-lg sm:text-xl font-bold text-white">Nova Trails</span>
             </div>
             
-            {/* Desktop Menu - Improved Layout */}
-            <div className="hidden md:flex items-center space-x-2">
-              <button onClick={handleHomeClick} className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Home</button>
-              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Destinations</Link>
-              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">About</Link>
-              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-4 py-2 rounded-lg hover:bg-sage-800/50">Contact</Link>
+            {/* Horizontal Navigation Menu */}
+            <div className="flex items-center space-x-2 lg:space-x-4">
+              <button onClick={handleHomeClick} className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Home</button>
+              <Link to="/destinations" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Destinations</Link>
+              <Link to="/about" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">About</Link>
+              <Link to="/contact" className="text-white hover:text-cream-300 transition-colors duration-200 px-2 lg:px-4 py-2 rounded-lg hover:bg-sage-800/50 text-sm lg:text-base">Contact</Link>
               <Button 
                 onClick={() => setBookingModalOpen(true)}
-                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-4"
+                className="bg-gradient-to-r from-terracotta-500 to-terracotta-600 hover:from-terracotta-600 hover:to-terracotta-700 text-white px-3 lg:px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-200 ml-2 lg:ml-4 text-sm lg:text-base"
               >
                 Book Now
               </Button>
             </div>
-            
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden text-white z-50 relative"
-              onClick={toggleMobileMenu}
-            >
-              <div className={`transition-all duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`}>
-                {mobileMenuOpen ? '✕' : '☰'}
-              </div>
-            </button>
           </div>
         </div>
-        
-        <MobileNav 
-          isOpen={mobileMenuOpen} 
-          onToggle={toggleMobileMenu} 
-          onBookingOpen={() => setBookingModalOpen(true)}
-        />
       </nav>
 
       {/* Hero Carousel Section */}
@@ -328,16 +306,13 @@ const Index = () => {
               <p className="text-cream-200 mb-4 sm:mb-6 text-sm sm:text-base">Discover what's never been found. We create extraordinary adventures that connect you with the world's most incredible destinations.</p>
               <div className="flex space-x-4">
                 <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">f</span>
+                  <Facebook size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">i</span>
+                  <Instagram size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">t</span>
-                </a>
-                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-sage-800 rounded-full flex items-center justify-center hover:bg-terracotta-600 transition-colors">
-                  <span className="text-xs">Y</span>
+                  <Twitter size={16} />
                 </a>
               </div>
             </div>
@@ -359,16 +334,16 @@ const Index = () => {
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Contact Info</h3>
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-start space-x-3">
-                  <span className="text-cream-200 text-sm sm:text-base">123 Adventure Street<br/>Explorer City, EC 12345</span>
+                  <span className="text-cream-200 text-sm sm:text-base">Arusha, Tanzania</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-cream-200 text-sm sm:text-base">+1 (555) 123-NOVA</span>
+                  <span className="text-cream-200 text-sm sm:text-base">+255 744 667 778</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-cream-200 text-sm sm:text-base">info@novatrails.com</span>
+                  <span className="text-cream-200 text-sm sm:text-base">novatrails01@outlook.com</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <span className="text-cream-200 text-sm sm:text-base">Mon-Fri: 9AM-6PM<br/>Sat-Sun: 10AM-4PM</span>
+                  <span className="text-cream-200 text-sm sm:text-base">Mon-Fri: 06:30 AM - 18:30<br/>Sat-Sun: 06:30 AM - 14:00</span>
                 </div>
               </div>
             </div>
